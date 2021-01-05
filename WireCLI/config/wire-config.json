@@ -25,7 +25,7 @@
   "VsoConfig": {
     "BaseUri": "https://dev.azure.com/jia-projects",
     "PromptForLogin": false,
-    "Token": "ov5nq6grt55tfotlzp3ya7r7kf7gzy2y4hdrirok33qfaygbzl2a",
+    "Token": "spfuadsqfoi627yiatxxxfkcd2kws6l37ywnm2fmescbxarqgttq",
     "ConfigItems": {
       "CustomString04": {
         "AreaPath": "WIRE",
@@ -68,8 +68,8 @@
         "FieldType": 1,
         "FieldName": "Cost",
         "Description": "Cost, in hours, of the work item.",
-        "ValidationRegex": "^\\d{1,5}|\\d{0,5}\\.\\d{1,2}$",
-        "HelpMessage": "Cost must have a value indicating number of hours (i.e. 0.25, 1.5, 3.0, etc.)",
+        "ValidationRegex": "^\\d*\\.*\\d+$",
+        "HelpMessage": "Please update the Cost (total) with the amount of hours worked for this request. Increments of 0.25 = 15 minutes",
         "GracePeriodInHours": 0
       }
     }
