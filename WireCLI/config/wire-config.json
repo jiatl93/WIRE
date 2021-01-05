@@ -7,7 +7,19 @@
     "UserName": "wiretest27@gmail.com",
     "Password": "sK7Wj30KCl8m",
     "Recipients": {
-      "John Doe": "john.doe@contoso.com"
+      "Brian": "v-brly@microsoft.com",
+      "Connor": "v-cowhee@microsoft.com",
+      "Dean": "v-deavan@microsoft.com",
+      "Jia": "v-jiatol@mircosoft.com",
+      "Justin": "v-jukone@microsoft.com",
+      "Kalpana": "v-kalkut@microsoft.com",
+      "Katherine": "v-kagoul@microsoft.com",
+      "Ken B": "v-kenb@microsoft.com",
+      "Ken H": "v-kehagi@microsoft.com",
+      "Kolton": "v-kowall@microsoft.com",
+      "Micah": "v-micake@microsoft.com",
+      "Remone": "v-reatha@microsoft.com",
+      "Sheila": "v-sshrev@microsoft.com"
     }
   },
   "VsoConfig": {
@@ -19,7 +31,7 @@
         "AreaPath": "WIRE",
         "FieldType": 1,
         "FieldName": "CustomString04",
-        "Description": "Machine name (e.g. BLD37-PKG123)",
+        "Description": "Machine name (e.g. BLD14-PKG159)",
         "ValidationRegex": "^[\\w\\d\\-]+$",
         "HelpMessage": "Custom String 04 must have a value, or 'n/a' if not applicable.",
         "GracePeriodInHours": 0
@@ -47,7 +59,7 @@
         "FieldType": 1,
         "FieldName": "CustomString07",
         "Description": "Field consisting of specific value, or 'n/a' if not applicable",
-        "ValidationRegex": "^WTTManual$|^DiskSpace$|^NoHeartBeat$|^LostDrive$|n/a",
+        "ValidationRegex": "^WTTManual$|^DiskSpace$|^NoHeartBeat$|^LostDrive$|^wttmanual$|^diskspace$|^noheartbeat$|^lostdrive$|n/a",
         "HelpMessage": "Must be one of the following categories: 'WTTManual', 'DiskSpace', 'NoHeartBeat', 'LostDrive', or 'n/a'",
         "GracePeriodInHours": 0
       },
@@ -63,10 +75,10 @@
     }
   },
   "ControllerConfig": {
-    "PollingInterval": 60,
-    "ReportingInterval": 1440,
-    "ReportEmail": "jiatli327@gmail.com",
-    "ReportFolder": "C:\\wire-reports",
-    "LogFolder": "C:\\wire-logs"
+    "PollingInterval": 1,
+    "ReportingInterval": 1880,
+    "ReportEmail": "wing.flanagan@gmail.com",
+    "LogFolder": "H:\\temp\\wire-logs",
+    "ReportFolder": "H:\\temp\\wire-reports"
   }
 }
