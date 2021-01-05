@@ -294,7 +294,7 @@ namespace WireBusinessLogic
                                 var sendMsg = $"Sending reminder to {displayName}...";
                                 Message(sendMsg);
                                 Log(LogEntryType.INFO, sendMsg);
-                                _emailAPI.SendEmail(displayName, emailAddress, emailSubject, emailBody);
+                                //_emailAPI.SendEmail(displayName, emailAddress, emailSubject, emailBody);
                             }
                         }
                     }

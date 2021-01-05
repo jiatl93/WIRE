@@ -23,12 +23,39 @@
     }
   },
   "VsoConfig": {
-    "BaseUri": "https://dev.azure.com/jia-projects",
+    "BaseUri": "https://microsoft.visualstudio.com/OS",
     "PromptForLogin": false,
     "Token": "spfuadsqfoi627yiatxxxfkcd2kws6l37ywnm2fmescbxarqgttq",
     "ConfigItems": {
-      "CustomString04": {
-        "AreaPath": "WIRE",
+	  "CustomString01": {
+		    "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
+		    "FieldType": 1,
+		    "FieldName": "CustomString01",
+		    "Description": "Request Team",
+		    "ValidationRegex": "^.+$",
+		    "HelpMessage": "Request Team needs to be filled in.",
+		    "GracePeriodInHours": 0
+	  },
+	  "CustomString02": {
+		    "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
+		    "FieldType": 1,
+		    "FieldName": "CustomString02",
+		    "Description": "Request Type",
+		    "ValidationRegex": "^.+$",
+		    "HelpMessage": "Request Type needs to be filled in.",
+		    "GracePeriodInHours": 0
+	  }, 
+	  "CustomString03": {
+		  "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
+		  "FieldType": 1,
+		  "FieldName": "CustomString03",
+		  "Description": "Toil Category",
+		  "ValidationRegex": "^.+$",
+		  "HelpMessage": "Toil Category needs to be filled in.",
+		  "GracePeriodInHours": 0
+	  }, 
+	  "CustomString04": {
+        "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
         "FieldType": 1,
         "FieldName": "CustomString04",
         "Description": "Machine name (e.g. BLD14-PKG159)",
@@ -37,7 +64,7 @@
         "GracePeriodInHours": 0
       },
       "CustomString05": {
-        "AreaPath": "WIRE-Test",
+        "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
         "FieldType": 1,
         "FieldName": "CustomString05",
         "Description": "Packaging target OS that failed (e.g. blue, rs5)",
@@ -46,7 +73,7 @@
         "GracePeriodInHours": 0
       },
       "CustomString06": {
-        "AreaPath": "WIRE-Test",
+        "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
         "FieldType": 1,
         "FieldName": "CustomString06",
         "Description": "Architecture machine was trying to process (e.g. x86)",
@@ -55,7 +82,7 @@
         "GracePeriodInHours": 0
       },
       "CustomString07": {
-        "AreaPath": "WIRE-Test",
+        "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
         "FieldType": 1,
         "FieldName": "CustomString07",
         "Description": "Field consisting of specific value, or 'n/a' if not applicable",
@@ -64,7 +91,7 @@
         "GracePeriodInHours": 0
       },
       "Cost": {
-        "AreaPath": "WIRE-Test",
+        "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
         "FieldType": 1,
         "FieldName": "Cost",
         "Description": "Cost, in hours, of the work item.",
@@ -77,8 +104,8 @@
   "ControllerConfig": {
     "PollingInterval": 1,
     "ReportingInterval": 1880,
-    "ReportEmail": "wing.flanagan@gmail.com",
-    "LogFolder": "H:\\temp\\wire-logs",
-    "ReportFolder": "H:\\temp\\wire-reports"
+    "ReportEmail": "v-jiatol@microsoft.com",
+    "LogFolder": "C:\\Users\\v-jiatol\\Documents\\wire-logs",
+    "ReportFolder": "C:\\Users\\v-jiatol\\Documents\\wire-reports"
   }
 }
