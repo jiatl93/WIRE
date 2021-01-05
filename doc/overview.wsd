@@ -1,0 +1,49 @@
+@startuml
+
+namespace WireBusinessLogic {
+    Controller *-- WireConfig.ControllerConfig
+    class Controller{}
+}
+
+namespace WireCLI {    
+    CommandProcessor *-- Command
+    CLI *-- CommandProcessor
+    CommandProcessor *-- WireBusinessLogic.Controller
+
+    class Command{}
+    class CommandProcessor{}    
+    class CLI{}
+}
+
+namespace WireCommon {
+    class Common{}
+    interface IWireCommunicator{}    
+}
+
+namespace WireConfig{
+    ConfigFile *-- Configuration
+    VSOConfig *-- TaskItemConfig
+    EMailConfig <|-- ConfigBase
+    VSOConfig <|-- ConfigBase
+    ControllerConfig <|-- ConfigBase
+    Configuration *-- EMailConfig
+    Configuration *-- VSOConfig
+    Configuration *-- ControllerConfig
+    ConfigSettings *-- SettingType
+    TaskItemConfig *-- FieldType
+    ConfigBase *-- ConfigSettings
+    WireCLI.CommandProcessor *-- ConfigFile
+
+    class ConfigBase{}
+    class ConfigFile{}
+    class ConfigSettings{}
+    class Configuration{}
+    class ControllerConfig{}
+    class EMailConfig{}
+    enum FieldType{}
+    enum SettingType{}
+    class TaskItemConfig{}
+    class VSOConfig{}
+}
+
+@enduml

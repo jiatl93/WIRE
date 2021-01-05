@@ -1,0 +1,36 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=435a63ad_002D13bd_002D4fbc_002Dbeab_002D6518263c2e8e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetDisplayName_Positive_ExpectedBehavior" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.GetDisplayName_EMailConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.GetValue02_EMailConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.GetValue02_EMailConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue01_EMailConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue01_VSOConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue02_EMailConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue02_VSOConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue02_ControllerConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue01_EMailConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue02_EMailConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue02_VSOConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue02_ControllerConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.DeleteValue_EMailConfig_Positive&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.DeleteValue_EMailConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.ClearValue_EMailConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.SetValue01_ThrowException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigFileTests.Load_BadFileName&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigFileTests.Load_BadJSon&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigFileTests.Save_Error_On_BadFileName&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.EMailConfigTests.Init_StateUnderTest_ExpectedBehavior&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.EMailConfigTests.Error_StateUnderTest_ExpectedBehavior&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.EMailConfigTests.Assignment_Error_Port&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.EMailConfigTests.Assignment_Error_Ssl&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.EMailConfigTests.Assignment_Error_Recipient&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.VSOConfigTests.Init_StateUnderTest_ExpectedBehavior&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.VSOConfigTests.Assignment_Error_Recipient&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigurationTests.ClearValue_ControllerConfig_Negative&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ControllerConfigTests.Assignment_Error_PollingInterval&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigFileTests.Save_StateUnderTest_ExpectedBehavior_Default_File_Name&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C21CE1C1-80B1-49AF-A98C-4AE2A4C7ABDE::.NETFramework,Version=v4.7.2::WireConfigTests.ConfigFileTests.Load_StateUnderTest_ExpectedBehavior_Default_File_Name&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::388CB27E-77A1-4D5F-B0F0-A200DE0D15CF::.NETFramework,Version=v4.7.2::WireCLITests.CommandTests.TestMethod4&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

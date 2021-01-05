@@ -1,0 +1,6 @@
+* Refactored config classes to better separate them
+* Refactored API classes for testability
+* Provided injection-based constructors for API classes to facilitate unit testing
+* Added new namespace for business logic to better separate concerns - WireBusinessLogic
+* Created separate Controller class in the new namespace
+* Updated UML class diagrams to reflect the changes

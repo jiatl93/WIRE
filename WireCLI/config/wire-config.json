@@ -1,0 +1,72 @@
+{
+  "EMailConfig": {
+    "Host": "smtp.gmail.com",
+    "Port": 465,
+    "Ssl": true,
+    "FromEmail": "wiretest27@gmail.com",
+    "UserName": "wiretest27@gmail.com",
+    "Password": "sK7Wj30KCl8m",
+    "Recipients": {
+      "John Doe": "john.doe@contoso.com"
+    }
+  },
+  "VsoConfig": {
+    "BaseUri": "https://dev.azure.com/jia-projects",
+    "PromptForLogin": false,
+    "Token": "ov5nq6grt55tfotlzp3ya7r7kf7gzy2y4hdrirok33qfaygbzl2a",
+    "ConfigItems": {
+      "CustomString04": {
+        "AreaPath": "WIRE",
+        "FieldType": 1,
+        "FieldName": "CustomString04",
+        "Description": "Machine name (e.g. BLD37-PKG123)",
+        "ValidationRegex": "^[\\w\\d\\-]+$",
+        "HelpMessage": "Custom String 04 must have a value, or 'n/a' if not applicable.",
+        "GracePeriodInHours": 0
+      },
+      "CustomString05": {
+        "AreaPath": "WIRE-Test",
+        "FieldType": 1,
+        "FieldName": "CustomString05",
+        "Description": "Packaging target OS that failed (e.g. blue, rs5)",
+        "ValidationRegex": "^[\\w\\d]+$",
+        "HelpMessage": "Custom String 05 must have a value, or 'n/a' if not applicable.",
+        "GracePeriodInHours": 0
+      },
+      "CustomString06": {
+        "AreaPath": "WIRE-Test",
+        "FieldType": 1,
+        "FieldName": "CustomString06",
+        "Description": "Architecture machine was trying to process (e.g. x86)",
+        "ValidationRegex": "^[\\w\\d]+$",
+        "HelpMessage": "Custom String 06 must have a value, or 'n/a' if not applicable.",
+        "GracePeriodInHours": 0
+      },
+      "CustomString07": {
+        "AreaPath": "WIRE-Test",
+        "FieldType": 1,
+        "FieldName": "CustomString07",
+        "Description": "Field consisting of specific value, or 'n/a' if not applicable",
+        "ValidationRegex": "^WTTManual$|^DiskSpace$|^NoHeartBeat$|^LostDrive$|n/a",
+        "HelpMessage": "Must be one of the following categories: 'WTTManual', 'DiskSpace', 'NoHeartBeat', 'LostDrive', or 'n/a'",
+        "GracePeriodInHours": 0
+      },
+      "Cost": {
+        "AreaPath": "WIRE-Test",
+        "FieldType": 1,
+        "FieldName": "Cost",
+        "Description": "Cost, in hours, of the work item.",
+        "ValidationRegex": "^\\d{1,5}|\\d{0,5}\\.\\d{1,2}$",
+        "HelpMessage": "Cost must have a value indicating number of hours (i.e. 0.25, 1.5, 3.0, etc.)",
+        "GracePeriodInHours": 0
+      }
+    }
+  },
+  "ControllerConfig": {
+    "PollingInterval": 60,
+    "ReportingInterval": 1440,
+    "ReportEmail": "jiatli327@gmail.com",
+    "ReportFolder": "C:\\wire-reports",
+    "LogFolder": "C:\\wire-logs"
+  }
+}

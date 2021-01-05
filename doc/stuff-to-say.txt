@@ -1,0 +1,115 @@
+The program works like an interactive shell. You can talk to it through commands to view and update things like the configuration file, the time intervals for checking the database and sending a report email, what things to look for in Tasks that might need attention, and so on. While the program is running, it checks task items on the configured Visual Studio Online server at regular intervals, checks the results for the items that need attention, constructs emails, and then sends them to the users who need to correct the issues or follow up.
+
+I have tested the API for doing this and it works. My wrapper has yet to be written, as I have been focusing on the command system and configuration classes for the first few sprints.
+
+Events are logged using Log4Net, and also sent to the configured admin email at time intervals which can be different from the one used to check the VSO server.
+
+The classes are designed to keep the program modular, with reusable pieces. Except for the Command Line Interface main program, they communicate through event handlers and delegates, so that a different kind of UI could be substituted, if needed. 
+
+For output to a report file, I am going to abandon the original plan and use a custom listener for Log4Net, which can handle things like formatting and report organization automatically. 
+
+CLASSES
+-------
+
+ConfigSettings:
+---------------
+The ConfigSettings class contains the information for individual settings used by the application. It contains a key for the setting, which is short, and lowercase, then also a display name which is more readable and can be more than one works (like "username" as the key and "User Name" as the display value). It also has actions and functions which can be configured to handle different kinds of getters and setters. There are single item versions, and dictionary based versions for use when you need to drill down to items contained in a single setting. An example of this would be the Recipients list. Recipients is a single config item, but it has a dictionary of name - email pairs which need a separate pair of getters and setters that know how to handle the dictionary.
+
+SettingType (enumeration):
+--------------------------
+There is a SettingType enumeration than it uses to flag whether the setting is a Single or Dictionary type.
+
+ConfigBase:
+-----------
+The ConfigSettings are contained in a dictionary maintained by the ConfigBase class, which handles all of the common configuration settings for different categories of configuration - EMailConfig and VSOConfig. It has virtual methods for getting and setting values by name, and they are overridable in child classes. 
+
+VSOConfig:
+----------
+The VSOConfig class handles information related to connecting to Visual Studio Online, like the base uniform resource indicator (BaseURI) to contact it over the web, an access token to access the API, the email address for sending the reports, etc. It also has the logging level that Log4Net will use, but I may move that to a small logging config class.
+
+EMailConfig:
+------------
+The EMailConfig class does what it says, with all the information to connect to the email server, as well as the list of emails for the users that need to be notified. It has host, port, whether it uses SSL, login information, etc.
+
+Configuration:
+--------------
+The Configuration class contains instances of the other, specific ones. The reason for splitting the classes up and containing them like this is to keep them organized when writing them out to a file and reloading them. When serialized out to the file as JSON (JavaScript Object Notation), the sections automatically become organized for easy editing, if the user wants to edit it directly, instead of using the command line. 
+
+[at this point, you might want to show off the config file in the editor]
+
+ConfigFile:
+-----------
+This is the class is responsible for managing the file itself, loading from and saving to the disk. The constructor sets a default file name which can be set to something different by the user. It could be used to select different configuration files for different kinds of needs.
+
+CommandProcessor:
+-----------------
+The CommandProcessor class is responsible for handling commands from the keyboard and calling whatever methods in the appropriate classes to carry out the command. The command comes in as a list of words from the command line separated by spaces. When dealing with configuration, the first word is what you want to talk to (for example, config), the second word is what you want to do (get, set, delete, whatever), and all subsequent words are the things you want to operate on.
+
+[type "config load"]
+
+This loads the configuration file, whatever the current name. The default one loads whenever you start the program. Once loaded, you can look at config items using the command line.
+
+[type "config get host port username recipients"]
+
+You can set a value like this:
+
+[type "config set host=host.contoso.com", then verify with "config get host" to show the change]
+
+You can then save it to the current file name with
+
+[type "config save", then switch to the editor to show it has changed in the file]
+
+If you put quotes around the setting, you can put in spaces, like:
+
+["config set recipients "John Doe=john.doe@contoso.com""; then do "config get recipients"]
+
+Because John Doe was not in there, it added him. We can also change his email address with:
+
+[config set recipients "John Doe=jdoe@gmail.com"; then repeat config get recipients; you can also config save and show it in the config file]
+
+You will also notice that we have an extra parameter in the set command for dictionaries or lists - it was "config set recipients "John Doe=..."" instead of "config set "John Doe=..."" Regular config items like host, port, etc. cannot be added.
+
+There will be a delete function for dictionary items, too, but I did not implement it, yet. Right now each recipient name can only have one email address, but if they want more than one, I can put that in.
+
+There are commands for starting and stopping the timer to check for emails task items that need follow-up, but they don't do anything, yet.
+
+To quit the program you can just type "exit" or "quit":
+
+[type "quit" to leave the program]
+
+UNIT TESTS:
+-----------
+
+[show the code in the unit tests]
+
+Stubs are there for all of the different configuration classes, but so far I have only filled in the one for the ConfigFile class.
+
+There are four tests. A proper config file is written out for testing, NOT using the ConfigFile class, to make sure any errors in the class saving are kept separate. It is written out as two different file names to test loading from the default config file and from a custom config file name.
+
+The other tests are pretty much the same, but for saving.  In these tests, the file properties are set in the class and then written out so they can be compared to the hand-written config text to make sure they match.
+
+As more tests get written, I might use dependency injection and mock classes (using the Moq library), but so far, that does not seem necessary.
+
+Tools you are using:
+--------------------
+* Visual Studio Community 2019 for the program,
+* Visual Studio Code for a text editor
+* PlantUML and graphviz for the UML diagrams (the class pictures). 
+
+Add-ons include: 
+----------------
+* The VSO (Visual Studio Online) API libraries - which you are wrapping for simplicity
+* Newtonsoft JSON to save and load the config file text
+* Log4Net for logging/reporting
+* The email is using System.Net.Mail (built in to the dotnet framework), which has been deprecated by Microsoft, but is still usable and simple to code against.) Wrapping that, too.
+
+Projects in Solution:
+---------------------
+WireAPI - contains wrapper APIs for Email and VSO stuff
+
+WireCLI - contains the code for the Command Line Interface
+
+WireConfig - contains classes for the configuration stuff
+
+WireConfigTests - unit tests for configuration classes (When I reported on input/output tests in the progress report, I was referring to the config file input output.)
+

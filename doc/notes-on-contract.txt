@@ -1,0 +1,171 @@
+Project Title:
+--------------
+WIRE (Work Item Rule Enforcer)
+
+Brief Description:
+------------------
+My project is a command-line program that will query work items that do not meet requirements (i.e. that have not been updated for a certain number of days, are missing key information, etc). It will then generate and send email notifications to the authors of those work items telling them what they need to do in order to make those items compliant. The program will automatically check at an interval determined by the manager (i.e. hourly, daily, weekly, etc), using the tracking application's web API. A configuration file will store information on requirements, matching criteria, users within the scope of the manager's responsibility, etc.
+
+Question #1:
+------------
+Red Clay contracts with a major software vendor to provide monitoring and logistical support for CI/CD (Continuous Integration, Continuous Deployment) of artifacts for distribution to customers including bug fixes, feature updates, security patches, etc. These operations involve the creation, tracking, and completion of work items in a web-based project tracking system.
+
+Work items can include build restarts, defect tracking, deployments, redeployments, troubleshooting, documentation, etc. Each has requirements for the kind of data that needs to be included to maintain efficiency and provide sufficient information for managing the process. Unfortunately, the current system does not have a robust way to enforce the rules concerning these data points. This results in frequent errors that need correction.
+
+My project's goal is to increase the quality of service to our client by making the enforcement of rules for the work item process automatic. This will ensure consistency in rule enforcement, relieve the managers of the need to manually track compliance, and enforce QOS (Quality of Service) goals.
+
+The resulting product will run as an unobtrusive command-line program that periodically uses the Visual Studio Online (VSO) REST API to check for work items filed within a configurable time period. These work items will then be parsed and tested for rule compliance. Items lacking compliance (i.e. a required field that has not been filled in, or filled with an unrecognized or out-of-bounds value) will be flagged and recorded in a buffer, along with any configured standard messages for the item in question. This buffer will then be written to the body of an email, which will then be sent to the address of the person who wrote the work item.
+
+A log of the compliance issues and associated reminders will then be written to a dated text file for later review by the manager. The manager can have these reports sent to them by the program on a regular basis, written to a network share or local folder, or displayed to the screen on demand.
+
+Question #2:
+------------
+The academic merit of this project lies with the application of several key concepts I have learned in the course of my studies. these include:
+
+Analysis and problem solving skills:
+* Information gathering - identifying the issue (compliance)
+* Creativity - designing a solution (leveraging the VSO API to facilitate enforcement)
+* Learning by doing - exploring, writing against the API, testing
+
+Interpersonal skills:
+* Collaboration and team building - working with the stakeholders (my coworkers and manager who will be using this application)
+* Listening - gathering their feedback in order to refine the design during the development process
+* Managing change and uncertainty - making the inevitable changes that will be needed during the process, in order to match the program with the requirements
+
+Technology standards and procedures:
+* utilization of the product's REST API
+* using web security
+
+Software architecture:
+* object-oriented programming - C# language
+* interfaces
+* separation of concerns - structuring the business logic and CLI (Command Line Interface) for modularity and flexibility
+* SOLID principles
+
+Question #3:
+------------
+I will utilize the following technologies to complete my capstone project:
+
+Visual Studio 2019 - Visual Studio is a best-of-breed development environment for writing software in a wide variety of languages for all major platforms.
+
+DotNet Core 3.1 - IL (Intermediate Language) run-time supported on Windows, Linux, and MacOS. It enables the building and deployment of web apps, services, and console applications.
+
+C# - an object-oriented language that resembles Java, but benefits from more modern design principles. All modern language features are supported including interfaces, multithreading, concurrency management, properties, attributes, serialization, lambda expressions, etc.
+
+Postman - a development tool for web APIs that enables testing and development of code to interact with REST, SOAP, and JSON APIs. Will be used for the development of the API interaction of the application.
+
+Microsoft Visio - a diagramming tool which will be used to create UML diagrams for both design and documentation purposes.
+
+Git - for version control. The repo will be stored on Github.
+
+Question #4:
+------------
+The computer hardware I will be using includes -
+
+* A 2018 MacBook Pro with 8GB RAM, 500GB flash storage
+* Lenovo Thinkpad T480 with 32GB of RAM, 1TB flash storage
+
+Human resources include my manager and coworkers who will be evaluating each iteration of the software and providing feedback during the development and testing process.
+
+The major server/lab resource I need is an Azure DevOps VSO instance to act as a testing platform. I have access to this through work.
+
+Question #5:
+------------
+Potential barriers or problems I may face:
+
+* Limitations due to cross-platform considerations. To keep the code cross-platform, the current plan is to stay with DotNet Core as the run-time target of the program. However, not all dependent libraries ultimately needed for the project may exist for platforms outside of Windows. This is not a serious risk, however, as - realistically - all of the current users will be on Windows systems.
+
+Question #6:
+------------
+Sprint ending 10/2 - CLI framework:
+- Define the structure of the project
+- Create repository
+- Stub out VSO API handler
+- Stub out test cases
+- Create basic CLI framework - commands, responses, handlers
+- Deliverables:
+    - testable CLI for generating usability feedback
+    - First progress report
+
+Sprint ending 10/16 - API testing/integration:
+- Create basic test VSO environment
+- Write unit tests for VSO API calls
+- Code up/test API framework using System.Net.Http namespace
+- Create basic JSON configuration file & class
+- Deliverables:
+    - updated CLI which can retrieve data through API and output to console
+    - config file design and implementation
+    - second progress report
+
+Sprint ending 10/30 - Email and report generation:
+- Write unit tests for a basic email compiler
+- Code up a basic regex driven parser to generate email text based on API return data
+- Code up classes for parser, resultant email content
+- Write unit tests for basic text report output
+- Create classes for text report output from the email content classes
+- Deliverables:
+    - updated CLI which can sent emails and write same content to formatted text report
+    - third progress report
+
+Sprint ending 11/13 - connectivity and network:
+- Integrate email sending capabilities using System.Net.Mail
+- Integrate authentication using Authentication.AzureAD namespace
+- Test with live system to verify
+- Deliverables:
+    - updated program with all functionality in place
+    - fourth progress report
+
+Sprint ending 11/27 - UAT/bug fixes/fit-and-finish:
+- deploy application to users for testing
+- log/prioritize/repair bugs based on feedback
+- redeploy and re-test scenarios as needed
+- Deliverables:
+    - release candidate of final project
+    - documentation notes
+    - final progress report
+
+Sprint ending 12/11 - Documentation/Final delivery
+
+Question #7:
+------------
+For the capstone project:
+
+* I'm using an agile/SCRUM-like methodology. Sprints are two weeks long, with working deliverables and progress reports due at the end of each one.
+* Unit tests are a part of the methodology as well, with test-first coding as the working method.
+* I will be seeking feedback from the stakeholders for the deliverable from the previous sprint so that some time can be allocated during the current one for addressing feedback.
+* The done criteria include
+    - Documentation for the product - in code, as a help screen, and as a short usage guide/readme
+    - A successful run of the completed application using the scheduler for a period of one week
+
+A Loose Spec as a List of Functional Requirements (in case you need it):
+------------------------------------------------------------------------
+
+WIRE (Work Item Rule Enforcer)
+------------------------------
+Configuration file -
+    edit
+    parse
+    load into variables
+        - email server name
+        - values to look for
+        - value expressions to match (regular expressions)
+        - text to include in email if condition is not met
+        - user to run as
+        - date interval for how far back to look for work items in need of completion
+
+Security -
+    Program will use encrypted System Account credentials to get an API token
+        read-only permissions are sufficient
+
+CLI -
+    parameters for
+        name of config file
+        show report
+        help (usage)
+    set/get for various config values (i.e. like Git)
+
+output -
+    output report to text file
+    send report to manager periodically
+    output report to screen
+

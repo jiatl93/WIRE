@@ -1,0 +1,88 @@
+﻿{
+  "id": 7,
+  "rev": 4,
+  "fields": {
+    "System.AreaPath": "WIRE-Test",
+    "System.TeamProject": "WIRE-Test",
+    "System.IterationPath": "WIRE-Test",
+    "System.WorkItemType": "Task",
+    "System.State": "To Do",
+    "System.Reason": "Added to backlog",
+    "System.AssignedTo": {
+      "displayName": "jiatli327",
+      "url": "https://spsprodcus3.vssps.visualstudio.com/A298a7b82-d5e4-49db-95ee-ffca4d819bfe/_apis/Identities/ab87efd6-0dd3-4ea3-a678-5d96a6c33d7c",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/jia-projects/_apis/GraphProfile/MemberAvatars/msa.Y2U0NmNlM2MtMDJlNS03YzFmLWFhMmUtOWY0MGUxZmE0OTg5"
+        }
+      },
+      "id": "ab87efd6-0dd3-4ea3-a678-5d96a6c33d7c",
+      "uniqueName": "jiatli327@gmail.com",
+      "imageUrl": "https://dev.azure.com/jia-projects/_apis/GraphProfile/MemberAvatars/msa.Y2U0NmNlM2MtMDJlNS03YzFmLWFhMmUtOWY0MGUxZmE0OTg5",
+      "descriptor": "msa.Y2U0NmNlM2MtMDJlNS03YzFmLWFhMmUtOWY0MGUxZmE0OTg5"
+    },
+    "System.CreatedDate": "2020-12-10T07:03:03.73Z",
+    "System.CreatedBy": {
+      "displayName": "Wing Flanagan",
+      "url": "https://spsprodcus3.vssps.visualstudio.com/A298a7b82-d5e4-49db-95ee-ffca4d819bfe/_apis/Identities/4b58fd00-b108-4693-badb-3dfa8afac711",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/jia-projects/_apis/GraphProfile/MemberAvatars/msa.N2E4ZDM5NzItMTUwYS03NTJkLWJlY2YtNjY3MmE2NGQwNzgz"
+        }
+      },
+      "id": "4b58fd00-b108-4693-badb-3dfa8afac711",
+      "uniqueName": "wing.flanagan@gmail.com",
+      "imageUrl": "https://dev.azure.com/jia-projects/_apis/GraphProfile/MemberAvatars/msa.N2E4ZDM5NzItMTUwYS03NTJkLWJlY2YtNjY3MmE2NGQwNzgz",
+      "descriptor": "msa.N2E4ZDM5NzItMTUwYS03NTJkLWJlY2YtNjY3MmE2NGQwNzgz"
+    },
+    "System.ChangedDate": "2020-12-10T08:33:15.03Z",
+    "System.ChangedBy": {
+      "displayName": "Wing Flanagan",
+      "url": "https://spsprodcus3.vssps.visualstudio.com/A298a7b82-d5e4-49db-95ee-ffca4d819bfe/_apis/Identities/4b58fd00-b108-4693-badb-3dfa8afac711",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/jia-projects/_apis/GraphProfile/MemberAvatars/msa.N2E4ZDM5NzItMTUwYS03NTJkLWJlY2YtNjY3MmE2NGQwNzgz"
+        }
+      },
+      "id": "4b58fd00-b108-4693-badb-3dfa8afac711",
+      "uniqueName": "wing.flanagan@gmail.com",
+      "imageUrl": "https://dev.azure.com/jia-projects/_apis/GraphProfile/MemberAvatars/msa.N2E4ZDM5NzItMTUwYS03NTJkLWJlY2YtNjY3MmE2NGQwNzgz",
+      "descriptor": "msa.N2E4ZDM5NzItMTUwYS03NTJkLWJlY2YtNjY3MmE2NGQwNzgz"
+    },
+    "System.CommentCount": 0,
+    "System.Title": "Task 1",
+    "Microsoft.VSTS.Common.StateChangeDate": "2020-12-10T07:03:03.73Z",
+    "Microsoft.VSTS.Common.Priority": 2,
+    "Custom.Machinename": "HAL9000",
+    "Custom.PackagingtargetOSthatfailed": "Windows 10",
+    "Custom.CustomString04": "value1",
+    "Custom.CustomString05": "value2",
+    "Custom.CustomString06": "value3",
+    "Custom.Cost": 0.25,
+    "System.Description": "<div>Test task 1</div>"
+  },
+  "_links": {
+    "self": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/workItems/7"
+    },
+    "workItemUpdates": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/workItems/7/updates"
+    },
+    "workItemRevisions": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/workItems/7/revisions"
+    },
+    "workItemComments": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/workItems/7/comments"
+    },
+    "html": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_workitems/edit/7"
+    },
+    "workItemType": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/workItemTypes/Task"
+    },
+    "fields": {
+      "href": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/fields"
+    }
+  },
+  "url": "https://dev.azure.com/jia-projects/c6d79a93-5abf-476f-af6f-e30fbd9945e9/_apis/wit/workItems/7"
+}

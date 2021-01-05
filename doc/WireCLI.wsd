@@ -1,0 +1,28 @@
+@startuml
+
+namespace WireCLI {
+    CommandProcessor *-- WireConfig.ConfigFile   
+    CommandProcessor --() WireCommon.IWireCommunicator
+
+    class WireCLI.CommandProcessor {
+        -const string GENERAL_HELP_TEXT
+        -readonly Command _helpCommand
+        +Action<Exception> HandleError
+        +Action<string> HandleMessage
+        --
+        +CommandProcessor(ConfigFile confgFile)
+        --
+        -void ProcessHelpCommand(Command command)
+        +void ProcessCommand(string commandString)
+        -void ProcessConfigCommand(Command command)
+        -void ProcessDeleteCommand(Command command)
+        -void ProcessClearCommand(Command command)
+        -void ProcessGetCommand(Command command)
+        -string DisplayValue(string command, string key, dynamic value)
+        -void ProcessSetCommand(Command command)
+        -void Error(Exception exception)
+        -void Message(string message)
+    } 
+}
+
+@enduml

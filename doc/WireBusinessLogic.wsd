@@ -1,0 +1,28 @@
+@startuml
+
+namespace WireBusinessLogic {
+
+    Controller *-- WireAPI.VSOApi
+    Controller *-- WireAPI.EMailApi
+    Controller *-- WireConfig.ControllerConfig
+    Controller --() WireCommon.IWireConnumicator
+
+    class Controller {
+        +Action<Exception> HandleError
+        +Action<string> HandleMessage
+        -readonly EMailAPI _emailAPI
+        -readonly VSOApi _vsoApi
+        --
+        +Controller(VSOApi vsoApi, EMailAPI emailApi)
+        --
+        +void Start()
+        +void Stop()
+        +void SendReminder(string recipientName, string emailAddress, string subject, string body)
+        +void SendReport()
+        +void Error(Exception exception)
+        +void Message(string message)
+        -void CheckWorkItems()
+    }
+}
+
+@enduml

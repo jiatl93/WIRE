@@ -1,0 +1,27 @@
+{
+  "Id": "ab87efd6-0dd3-4ea3-a678-5d96a6c33d7c",
+  "Descriptor": {
+    "IdentityType": "Microsoft.IdentityModel.Claims.ClaimsIdentity",
+    "Identifier": "00030000334DEC91@Live.com"
+  },
+  "ProviderDisplayName": "jiatli327@gmail.com",
+  "CustomDisplayName": "jiatli327",
+  "DisplayName": "jiatli327",
+  "IsActive": true,
+  "UniqueUserId": 0,
+  "IsContainer": false,
+  "Members": [],
+  "MemberOf": [],
+  "Properties": {
+    "SchemaClassName": "User",
+    "Description": "",
+    "Domain": "Windows Live ID",
+    "Account": "jiatli327@gmail.com",
+    "DN": "",
+    "Mail": "jiatli327@gmail.com",
+    "SpecialType": "Generic",
+    "PUID": "00030000334DEC91",
+    "ComplianceValidated": "2020-12-11T00:00:00Z",
+    "MetadataUpdateDate": "2020-09-26T04:34:33Z"
+  }
+}

@@ -1,0 +1,167 @@
+@startuml
+
+namespace WireConfig {
+     ConfigFile *-- Configuration
+     VSOConfig *-- TaskItemConfig
+     EMailConfig <|-- ConfigBase
+     VSOConfig <|-- ConfigBase
+     ControllerConfig <|-- ConfigBase
+     Configuration *-- EMailConfig
+     Configuration *-- VSOConfig
+     Configuration *-- ControllerConfig
+     ConfigSettings *-- SettingType
+     ConfigBase *-- ConfigSettings
+     ConfigFile --() WireCommon.IWireCommunicator
+
+     enum WireConfig.SettingType {
+        Single
+        Dictionary
+    }
+
+    class ConfigSettings {
+        +string Key
+        +SettingType Type
+        --
+        +ConfigSettings(string key, string displayName, SettingType type, 
+        Action<dynamic> setter, Func<dynamic> getter, Func<dynamic, string> dictionaryGetter = null, 
+        Action<string, dynamic> dictionarySetter = null)
+        --
+        +Action<dynamic> Setter
+        +Func<dynamic> Getter
+        +Func<dynamic, string> DictionaryGetter
+        +Action<string, dynamic> DictionarySetter
+        +Action<string> DictionaryItemDeleter
+    }
+    
+    abstract class ConfigBase {
+        #Dictionary<string, ConfigSettings> Settings
+        --
+        #ConfigBase()
+        --
+        ~{abstract} void Init()
+        ~bool ContainsSetting(string settingName)
+        ~string GetDisplayName(string settingName)
+        ~dynamic GetValue(string settingName)
+        ~dynamic GetValue(string settingName, string dictionaryKey)
+        ~void SetValue(string settingName, dynamic value)
+        ~void SetValue(string settingName, string dictionaryKey, dynamic value)
+        ~void DeleteValue(string settingName, string dictionaryKey)
+        ~void ClearValue(string settingName)
+    }
+    
+    class Configuration <<serializable>> {
+        +EMailConfig EMailConfig
+        +VSOConfig VsoConfig
+        +ControllerConfig ControllerConfig
+        --
+        +Configuration()
+        --
+        +string GetDisplayName(string setting)
+        +dynamic GetValue(string setting)
+        +dynamic GetValue(string setting, string key)        
+        +void SetValue(string setting)
+        +void SetValue(string category, string setting)
+        +void DeleteValue(string category, string setting)
+        +void ClearValue(string setting)
+    }
+    
+    class ConfigFile {
+        -const string DEFAULT_FILENAME
+        +Action<Exception> HandleError
+        +Action<string> HandleMessage
+        +string FileName
+        +Configuration Configuration
+        +{static} ConfigFile Instance
+        --
+        +ConfigFile()
+        --
+        +void Load()
+        +void Load(string fileName)
+        +void Save()
+        +void Save(string fileName)
+        -void Error(Exception exception)
+        -void Message(string message)
+    }
+    
+    class EMailConfig <<serializable>> {
+       -string HOST_KEY
+       -string PORT_KEY
+       -string SSL_KEY0
+       -string FROMEMAIL_KEY
+       -string USERNAME_KEY
+       -string PASSWORD_KEY
+       -string RECIPIENTS_KEY
+       --
+       -string HOST_DISPLAY
+       -string PORT_DISPLAY
+       -string SSL_DISPLAY
+       -string FROMEMAIL_DISPLAY
+       -string USERNAME_DISPLAY
+       -string PASSWORD_DISPLAY
+       -string RECIPIENTS_DISPLAY
+       --
+       +string Host
+       +int Port
+       +bool Ssl
+       +string FromEmail
+       +string UserName
+       +string Password
+       +Dictionary<string, string> Recipients
+       --
+       +EMailConfig()
+       --
+       #void Init()
+    }
+    
+    class VSOConfig <<serializable>> {
+        -string BASEURI_KEY
+        -string TOKEN_KEY        
+        -string CONFIGITEMS_KEY
+        --
+        -string BASEURI_DISPLAY
+        -string TOKEN_DISPLAY
+        -string CONFIGITEMS_DISPLAY
+        +Dictionary<string, TaskItemConfig> ConfigItems
+        --
+        +string BaseUri
+        +string PersonalAuthenticationToken
+        --
+        +VSOConfig()
+        --
+        #void Init()
+    }
+
+    class ControllerConfig <<serializable>> {
+        -string POLLINGINTERVAL_KEY
+        -string REPORTINGINTERVAL_KEY
+        -string REPORTEMAIL_KEY
+        --
+        -string POLLINGINTERVAL_DISPLAY
+        -string REPORTINGINTERVAL_DISPLAY
+        -string REPORTEMAIL_DISPLAY
+        --
+        +int PollingInterval
+        +int ReportingInterval
+        +string ReportEmailAddress
+        --
+        +ControllerConfig()
+        --
+        #void Init()
+    }
+
+    class TaskItemConfig <<serializable>> {
+        +string FieldName
+        +string Description
+        +string ValidationRegex
+        +string HelpMessage
+        +int GracePeriodInHours
+        --
+        +TaskItemConfig(string fieldName, string description, 
+            string validationRegex, string helpMessage,
+            int gracePeriodInHours)
+        --
+        +bool IsValid(dynamic value)
+    }
+}
+
+@enduml

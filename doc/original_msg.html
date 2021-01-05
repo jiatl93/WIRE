@@ -1,0 +1,2027 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 6.3.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-family: "Liberation Mono", monospace; font-size: 10pt; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>Delivered-To: wing.flanagan@gmail.com
+Received: by 2002:a05:6102:109e:0:0:0:0 with SMTP id s30csp824892vsr;
+        Fri, 11 Dec 2020 15:02:44 -0800 (PST)
+X-Received: by 2002:a2e:924f:: with SMTP id v15mr6465146ljg.6.1607727763742;
+        Fri, 11 Dec 2020 15:02:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607727763; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fAtwTNJidFTwY0J5Gtg+iadbhHcQ1bqIw/NOkE+YSCVqRKhxIluOf5XnJyRqKUr7Sj
+         juFIQjb1mhiAc/FOgDtRVJV7eHbD1f7A9796cDyLR2EsJZsw60WQw7ZG2oOUb6BDpCLk
+         WKo+yrnn25e1wSw38HrrA/3X/hDs5KqhsqfCc3ER3cfVxmmZdPAhdtTsxhnILNilNC4m
+         JQI7WJpmVeu+iSoh10WS3yt8PUffsJhM2AFa4UqYHWbMMIcmTuTpdwXhahgJO5RKWhRe
+         fbtzUW5VmDg7IrtJ/VelSoSyHc+3JPVAI+kJHONq/C6pr1NL/3914toOXlW6ogjuBnbM
+         9zsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=szfOIvlktwluLsJIXFJIwKle35X8aBXzyF0JVGI9VaY=;
+        b=WoCOCDw0RsNBmsc8xE4JfgTbU8UwtBlRSWN0f+LquvMEJfNW//RKyQJd9Tt3kCKx9D
+         k0fZ+Em82cXPsFNTPPJVeiFtbSiFP9NkqolrhckD933b8xiAJ2iDsRhQqbKZKG50qlT6
+         J8iT7KxGEjjjCjZ6MkcfQUsQrFdwvnpSvvT356mWAqMMBwWoZRAXgmKae6TGL7CJ4UYI
+         pgaB9yNe5wN2hGQbB58ATvdFP4bVQ9iArdqA4wqebF2qwyJjkCiujTolSfSwE4Uydv9v
+         a7uC1TDT1piqN5L18Mbddh7taBzAYU0l1AntMyQXLRakPEi+Pa6JQk43rIG8/5T7yLC+
+         cOCw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EUPEnAZo;
+       spf=pass (google.com: domain of jiatli327@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jiatli327@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: &lt;jiatli327@gmail.com&gt;
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l13sor1598463lfp.171.2020.12.11.15.02.43
+        for &lt;wing.flanagan@gmail.com&gt;
+        (Google Transport Security);
+        Fri, 11 Dec 2020 15:02:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of jiatli327@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EUPEnAZo;
+       spf=pass (google.com: domain of jiatli327@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jiatli327@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=szfOIvlktwluLsJIXFJIwKle35X8aBXzyF0JVGI9VaY=;
+        b=EUPEnAZoOEOnt4JngAd3rK0mYYSsDdPCB4LzNloR4ApwneDR3VjKdHdxeFXJXzH98Y
+         wkT5PpLXNRn4FCeLn5Cf5BpZ0dtwsOYxUntY4YvzcQwmXlHGHtrxlR5G3Igyi/+I0RwZ
+         eR35bsE57WHzfjsXKQtMWVmb9Sq32I3slqJOtGtD2nJbVhXxcjhUiFlXqpLwazo9XteN
+         xJBVHY7BuDdGd2OkgSfsvGsgiPb4KxlvC7YmBIpYKJ5xhy1qyJgaNJ2sj8Cf1i0yE/Ev
+         Q2NhZatvrlh6k+GvEjllM/1BG2ZSctUC+G/WoDkbyuGPU11h45K+193Pi97qLzdpw7Ff
+         DVlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=szfOIvlktwluLsJIXFJIwKle35X8aBXzyF0JVGI9VaY=;
+        b=q2WskFniNAwIjhwYzj+St0SblI1QR9irkjzphmTDyPQqHp/WQuAK41dp+IIEnlqgym
+         6Nwt17q/u+MHLEy3IHMU7h+geqnUyOUtQugRUwkGHOfQGve34qlgFEcXGL1ftCU+z2HN
+         mJceuJPF0qdFeOA31gM3trHBqQXk6yQ0pspXEdd1UY1BhevuDKUvvqr0Wfzh4sAnxwko
+         dSOGnW+vAIXd4z/65ZrdWPOdyCPSsKI4haEdIFqVEWnzmWhnWDOuOvTraLfUudcYetla
+         p9IonXoJbs0PZWGIuBGEwH4YxSzfYeUsSVpZMDgNgdekwYax2FWCP0PNby4XIUjeQDjZ
+         3kVA==
+X-Gm-Message-State: AOAM533OPnMWb86TE5UNZ6k/HSyfon3gMTYzFXii3k+2KCdSstzdq+JQ
+	5wtgvatJETPm0DKiR6D1Oz4ZovkC4MHeZWMRKAZ0Nc3/krrZ1Q==
+X-Google-Smtp-Source: ABdhPJwvvpuwlyZkQM8VyQj69Ohoiad3Ygfq6L6R3CVQwcHpn5oD5hd6fgBWWr/vsHtxrhHsXWm8LTU0x/cHszENWOc=
+X-Received: by 2002:ac2:4bc1:: with SMTP id o1mr5518880lfq.232.1607727762890;
+ Fri, 11 Dec 2020 15:02:42 -0800 (PST)
+MIME-Version: 1.0
+From: Jia Li &lt;jiatli327@gmail.com&gt;
+Date: Fri, 11 Dec 2020 15:02:31 -0800
+Message-ID: &lt;CAL-1YADnkRBjD7SFHW_kTevJJeHqEnCaOmKiBe3+2+0Y2MXpvQ@mail.gmail.com&gt;
+Subject: 
+To: Wing Flanagan &lt;wing.flanagan@gmail.com&gt;
+Content-Type: multipart/alternative; boundary=&quot;00000000000033e73005b6384aaa&quot;
+
+--00000000000033e73005b6384aaa
+Content-Type: text/plain; charset=&quot;UTF-8&quot;
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Those of you on the To line are receiving this mail as there are inicdents
+filed on you or your team that are still active and not yet mitigated.
+Please see SLAs for Time to Mitigate (TTM)
+&lt;https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fosgwik=
+i.com%2Fwiki%2FCSD_Severity_%2526_SLA%23Time_to_Mitigate_.28TTM.29&amp;data=3D0=
+4%7C01%7Cv-jiatol%40microsoft.com%7C400dff75f28e457b0a5808d89dfc9661%7C72f9=
+88bf86f141af91ab2d7cd011db47%7C1%7C0%7C637433055467589204%7CUnknown%7CTWFpb=
+GZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7=
+C1000&amp;sdata=3DY8HZKM8Re3ZNz5SvCnaQWFHzO2jEXvf7mAGzz%2BolGew%3D&amp;reserved=3D0=
+&gt;
+
+*Incidents Pending Resolution: *26
+*Ask: *Please work with your team to acknowledge the incidents in the list
+below.
+
+*IncidentId*
+
+*Link*
+
+*Age*
+
+*Title*
+
+*Severity*
+
+*Status*
+
+*CreateDate*
+
+*OwningContactAlias*
+
+*OwningTeamName*
+
+217874107
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217874107
+
+1
+
+[Package Break] SR-140234V KB4598291 (vb_release_svc_prod2) PSFXSIGNCAB
+Failure: Error running createpkg
+
+3
+
+ACTIVE
+
+2020-12-10T10:04:08.34
+
+shenghl
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217878561
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217878561
+
+1
+
+[Package Break] SR-140221B KB4598242 (vb_release_svc_prod1) INITIALIZATION
+Failure: Can't run to unidentified task [PSFXCOMPRESS]
+
+3
+
+ACTIVE
+
+2020-12-10T10:41:31.27
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217879451
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217879451
+
+1
+
+[Package Break] SR-140221B KB4598242 (vb_release_svc_prod1) PSFXSIGNCAB
+Failure: Error running createpkg
+
+3
+
+ACTIVE
+
+2020-12-10T10:49:01.96
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217883788
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217883788
+
+1
+
+[Package Break] SR-140221B KB4598242 (vb_release_svc_prod1) PREPACKAGING
+Failure: Could not Create Pkg Config: Could not Find chunk(s)
+
+3
+
+ACTIVE
+
+2020-12-10T11:26:57.167
+
+v-brly
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217903658
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217903658
+
+1
+
+[Package Break] SR-140221B KB4598242 (vb_release_svc_prod1) PSFXSIGNCAB
+Failure: Error running createpkg
+
+3
+
+ACTIVE
+
+2020-12-10T14:27:53.357
+
+v-brly
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217922378
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217922378
+
+1
+
+[PVT Break] Pkg Job:SR-140147N Project:WindowsBlue-RTM x64
+
+3
+
+ACTIVE
+
+2020-12-10T17:15:26.04
+
+v-deavan
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217923641
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217923641
+
+1
+
+[BVT Break] : Package :6dcc352e-aac7-403c-b9e4-0a9a9ab28c38 failed xBVT
+scenario: compareBranchNames
+
+3
+
+ACTIVE
+
+2020-12-10T17:26:36.193
+
+WSDBUILDANDPACKAGING\BVT-Engineering
+
+217924596
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217924596
+
+1
+
+[APGPIE] - [file: ReleaseTicketController.cs] [line: 54] [method: Index]
+
+3
+
+ACTIVE
+
+2020-12-10T17:34:19.143
+
+sorat
+
+WSDBUILDANDPACKAGING\NextGenPayloadIdentification
+
+217926607
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217926607
+
+0
+
+[BVT Break] : Package :9528b8bd-bb4d-4891-9916-54181f9aeadb failed xBVT
+scenario: validatePreviousMsu
+
+3
+
+ACTIVE
+
+2020-12-10T17:51:44.203
+
+nidals
+
+WSDBUILDANDPACKAGING\BVT-Engineering
+
+217929470
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217929470
+
+1
+
+[PVT Break] Pkg Job:SR-140147N Project:WindowsBlue-RTM x64
+
+3
+
+ACTIVE
+
+2020-12-10T18:15:24.353
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217939217
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217939217
+
+1
+
+[PVT Break] Pkg Job:SR-140147N Project:WindowsBlue-RTM x64
+
+3
+
+ACTIVE
+
+2020-12-10T19:30:30.777
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217944820
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217944820
+
+1
+
+[PVT Break] Pkg Job:SR-140244U Project:WindowsBlue-RTM x64 causes test VM
+to black screen after installation
+
+3
+
+ACTIVE
+
+2020-12-10T20:15:19.51
+
+v-jukone
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217963148
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217963148
+
+1
+
+[BVT Break] : Package :SR-140219Z failed xBVT scenario: wdag
+
+3
+
+ACTIVE
+
+2020-12-10T22:41:28.893
+
+WSDBUILDANDPACKAGING\BVT-Engineering
+
+217972550
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217972550
+
+0
+
+[PVT Break] Pkg Job:SR-140261A Project:Windows7.0-SP1-BLD x64
+
+3
+
+ACTIVE
+
+2020-12-11T00:00:23.94
+
+v-jukone
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217972575
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217972575
+
+0
+
+[PVT Break] Pkg Job:SR-140261A Project:Windows7.0-SP1-BLD x86
+
+3
+
+ACTIVE
+
+2020-12-11T00:00:33.467
+
+v-jukone
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217975538
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217975538
+
+0
+
+[Package Break] SR-140234V KB4598291 (vb_release_svc_prod2) PREPACKAGING
+Failure: GetInfoFromDB Call Failed
+
+3
+
+ACTIVE
+
+2020-12-11T00:22:51.48
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217976241
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217976241
+
+0
+
+[Package Break] SR-140234V KB4598291 (vb_release_svc_prod2) PREPACKAGING
+Failure: GetInfoFromDB Call Failed
+
+3
+
+ACTIVE
+
+2020-12-11T00:29:20.567
+
+v-jiatol
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217978535
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217978535
+
+0
+
+[PVT Break] Pkg Job:SR-140219Z Project:Windows1019H1_1005_BVT arm64
+
+3
+
+ACTIVE
+
+2020-12-11T00:45:36.08
+
+v-jukone
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217993026
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217993026
+
+0
+
+[PVT Break] Pkg Job:SR-140247K Project:WindowsBlue-RTM x64
+
+3
+
+ACTIVE
+
+2020-12-11T02:45:23.613
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217694589
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217694589
+
+2
+
+[PVT][$\WSD\PackageValidation\ARM64\RS5] Low Capacity:1 Ready,0 Running,3
+BadState.
+
+3
+
+ACTIVE
+
+2020-12-09T08:51:22.197
+
+v-deavan
+
+WSDBUILDANDPACKAGING\BVTOps
+
+217732989
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217732989
+
+2
+
+[BVT Break] : Package :17fe94ff-4018-4e67-836b-0a06e676d81c failed xBVT
+scenario: wdag
+
+3
+
+ACTIVE
+
+2020-12-09T14:11:20.487
+
+WSDBUILDANDPACKAGING\BVT-Engineering
+
+217797020
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217797020
+
+2
+
+[Package size spike] Windows 10 1903 - KB4598229 - 2021.01 B - V1.000 has
+increased by 53.15 MB size.
+
+3
+
+ACTIVE
+
+2020-12-09T22:52:33.127
+
+shenghl
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217835820
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217835820
+
+1
+
+[BVT Break] : Package :aee27d81-7f82-4afb-91ac-8b307b325b90 failed xBVT
+scenario: validatePreviousMsu
+
+3
+
+ACTIVE
+
+2020-12-10T04:21:24.97
+
+WSDBUILDANDPACKAGING\BVT-Engineering
+
+217843901
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217843901
+
+1
+
+[BVT Break] : Package :aee27d81-7f82-4afb-91ac-8b307b325b90 failed xBVT
+scenario: validatePreviousMsu
+
+3
+
+ACTIVE
+
+2020-12-10T05:39:48.27
+
+WSDBUILDANDPACKAGING\BVT-Engineering
+
+217853359
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217853359
+
+1
+
+[Package Break] SR-140221B KB4598242 (vb_release_svc_prod1) PSFXSIGNCAB
+Failure: Error running createpkg
+
+3
+
+ACTIVE
+
+2020-12-10T07:04:20.59
+
+shenghl
+
+WSDBUILDANDPACKAGING\CorePackaging-Engineering
+
+217862862
+
+https://portal.microsofticm.com/imp/v3/incidents/details/217862862
+
+1
+
+[PVT][$\WSD\PackageValidation\ARM64\RS5] Low Capacity:1 Ready,2 Running,1
+BadState.
+
+3
+
+ACTIVE
+
+2020-12-10T08:24:05.217
+
+v-deavan
+
+WSDBUILDANDPACKAGING\BVTOps
+
+
+Action
+
+Action Required
+
+--00000000000033e73005b6384aaa
+Content-Type: text/html; charset=&quot;UTF-8&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;div dir=3D&quot;ltr&quot;&gt;&lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in;font-size:11pt;=
+font-family:Calibri,sans-serif&quot;&gt;Hi, &lt;br&gt;
+&lt;br&gt;
+Those of you on the To line are receiving this mail as there are inicdents
+filed on you or your team that are still active and not yet mitigated. Plea=
+se
+see &lt;a href=3D&quot;https://nam06.safelinks.protection.outlook.com/?url=3Dhttps%=
+3A%2F%2Fosgwiki.com%2Fwiki%2FCSD_Severity_%2526_SLA%23Time_to_Mitigate_.28T=
+TM.29&amp;amp;data=3D04%7C01%7Cv-jiatol%40microsoft.com%7C400dff75f28e457b0a580=
+8d89dfc9661%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637433055467589204=
+%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haW=
+wiLCJXVCI6Mn0%3D%7C1000&amp;amp;sdata=3DY8HZKM8Re3ZNz5SvCnaQWFHzO2jEXvf7mAGzz%2=
+BolGew%3D&amp;amp;reserved=3D0&quot; style=3D&quot;color:blue&quot;&gt;SLAs
+for Time to Mitigate (TTM)&lt;/a&gt; &lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Incidents Pending Resolution: &lt;/b&gt;26&lt;br&gt;
+&lt;b&gt;Ask: &lt;/b&gt;Please work with your team to acknowledge the incidents in the =
+list
+below. &lt;/p&gt;
+
+&lt;table class=3D&quot;gmail-MsoNormalTable&quot; border=3D&quot;0&quot; cellspacing=3D&quot;0&quot; cellpa=
+dding=3D&quot;0&quot; style=3D&quot;border-collapse:collapse&quot;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;td style=3D&quot;border:1pt solid rgb(173,186,220);background:rgb(49,68,114)=
+;padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;IncidentId&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;Link&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;Age&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;Title&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;Severity&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;Status&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;CreateDate&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;OwningContactAlias&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td style=3D&quot;border-top:1pt solid rgb(173,186,220);border-right:1pt soli=
+d rgb(173,186,220);border-bottom:1pt solid rgb(173,186,220);border-left:non=
+e;background:rgb(49,68,114);padding:6pt&quot;&gt;
+   &lt;p class=3D&quot;MsoNormal&quot; align=3D&quot;center&quot; style=3D&quot;margin:0in 0in 12pt;tex=
+t-align:center;font-size:11pt;font-family:Calibri,sans-serif&quot;&gt;&lt;b&gt;&lt;span styl=
+e=3D&quot;color:rgb(245,209,53)&quot;&gt;OwningTeamName&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;&lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217874107&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217874107&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217874107&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140234V KB4598291
+  (vb_release_svc_prod2) PSFXSIGNCAB Failure: Error running createpkg&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T10:04:08.34&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;shenghl&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217878561&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217878561&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217878561&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140221B KB4598242
+  (vb_release_svc_prod1) INITIALIZATION Failure: Can&amp;#39;t run to unidentif=
+ied task
+  [PSFXCOMPRESS]&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T10:41:31.27&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217879451&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217879451&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217879451&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140221B KB4598242
+  (vb_release_svc_prod1) PSFXSIGNCAB Failure: Error running createpkg&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T10:49:01.96&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217883788&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217883788&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217883788&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140221B KB4598242
+  (vb_release_svc_prod1) PREPACKAGING Failure: Could not Create Pkg Config:
+  Could not Find chunk(s)&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T11:26:57.167&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-brly&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217903658&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217903658&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217903658&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140221B KB4598242
+  (vb_release_svc_prod1) PSFXSIGNCAB Failure: Error running createpkg&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T14:27:53.357&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-brly&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217922378&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217922378&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217922378&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140147N Project:WindowsBlu=
+e-RTM x64
+  &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T17:15:26.04&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-deavan&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217923641&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217923641&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217923641&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[BVT Break] : Package
+  :6dcc352e-aac7-403c-b9e4-0a9a9ab28c38 failed xBVT scenario:
+  compareBranchNames&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T17:26:36.193&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVT-Engineering&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217924596&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217924596&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217924596&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[APGPIE] - [file: ReleaseTicketController.cs] [li=
+ne: 54]
+  [method: Index]&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T17:34:19.143&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;sorat&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\NextGenPayloadIdentification=
+&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217926607&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217926607&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217926607&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[BVT Break] : Package
+  :9528b8bd-bb4d-4891-9916-54181f9aeadb failed xBVT scenario:
+  validatePreviousMsu&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T17:51:44.203&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;nidals&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVT-Engineering&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217929470&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217929470&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217929470&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140147N Project:WindowsBlu=
+e-RTM x64
+  &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T18:15:24.353&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217939217&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217939217&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217939217&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140147N Project:WindowsBlu=
+e-RTM x64
+  &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T19:30:30.777&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217944820&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217944820&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217944820&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140244U Project:WindowsBlu=
+e-RTM x64
+  causes test VM to black screen after installation&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T20:15:19.51&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-jukone&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217963148&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217963148&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217963148&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[BVT Break] : Package :SR-140219Z failed xBVT sce=
+nario:
+  wdag&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T22:41:28.893&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVT-Engineering&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217972550&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217972550&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217972550&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140261A Project:Windows7.0=
+-SP1-BLD
+  x64 &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-11T00:00:23.94&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-jukone&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217972575&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217972575&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217972575&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140261A Project:Windows7.0=
+-SP1-BLD
+  x86 &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-11T00:00:33.467&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-jukone&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217975538&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217975538&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217975538&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140234V KB4598291
+  (vb_release_svc_prod2) PREPACKAGING Failure: GetInfoFromDB Call Failed&lt;/p=
+&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-11T00:22:51.48&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217976241&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217976241&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217976241&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140234V KB4598291
+  (vb_release_svc_prod2) PREPACKAGING Failure: GetInfoFromDB Call Failed&lt;/p=
+&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-11T00:29:20.567&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-jiatol&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217978535&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217978535&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217978535&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140219Z
+  Project:Windows1019H1_1005_BVT arm64 &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-11T00:45:36.08&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-jukone&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217993026&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217993026&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217993026&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;0&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT Break] Pkg Job:SR-140247K Project:WindowsBlu=
+e-RTM x64
+  &lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-11T02:45:23.613&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217694589&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217694589&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217694589&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT][$\WSD\PackageValidation\ARM64\RS5] Low Capa=
+city:1
+  Ready,0 Running,3 BadState.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-09T08:51:22.197&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-deavan&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217732989&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217732989&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217732989&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[BVT Break] : Package
+  :17fe94ff-4018-4e67-836b-0a06e676d81c failed xBVT scenario: wdag&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-09T14:11:20.487&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVT-Engineering&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217797020&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217797020&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217797020&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package size spike] Windows 10 1903 - KB4598229 =
+- 2021.01
+  B - V1.000 has increased by 53.15 MB size.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-09T22:52:33.127&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;shenghl&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217835820&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217835820&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217835820&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[BVT Break] : Package
+  :aee27d81-7f82-4afb-91ac-8b307b325b90 failed xBVT scenario:
+  validatePreviousMsu&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T04:21:24.97&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVT-Engineering&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217843901&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217843901&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217843901&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[BVT Break] : Package
+  :aee27d81-7f82-4afb-91ac-8b307b325b90 failed xBVT scenario:
+  validatePreviousMsu&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T05:39:48.27&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;&lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVT-Engineering&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217853359&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217853359&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217853359&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[Package Break] SR-140221B KB4598242
+  (vb_release_svc_prod1) PSFXSIGNCAB Failure: Error running createpkg&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T07:04:20.59&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;shenghl&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\CorePackaging-Engineering&lt;/p=
+&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style=3D&quot;border-right:1pt solid rgb(173,186,220);border-bottom:1pt so=
+lid rgb(173,186,220);border-left:1pt solid rgb(173,186,220);border-top:none=
+;padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;217862862&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;&lt;a href=3D&quot;https://portal.microsofticm.com/imp/v3=
+/incidents/details/217862862&quot; style=3D&quot;color:blue&quot;&gt;https://portal.microsoft=
+icm.com/imp/v3/incidents/details/217862862&lt;/a&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;[PVT][$\WSD\PackageValidation\ARM64\RS5] Low Capa=
+city:1
+  Ready,2 Running,1 BadState.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;ACTIVE&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;2020-12-10T08:24:05.217&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;v-deavan&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style=3D&quot;border-top:none;border-left:none;border-bottom:1pt solid rgb=
+(173,186,220);border-right:1pt solid rgb(173,186,220);padding:6pt&quot;&gt;
+  &lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in 0in 12pt;font-size:11pt;font-f=
+amily:Calibri,sans-serif&quot;&gt;WSDBUILDANDPACKAGING\BVTOps&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in;font-size:11pt;font-family:Calib=
+ri,sans-serif&quot;&gt;=C2=A0&lt;/p&gt;
+
+&lt;h4 style=3D&quot;margin-right:0in;margin-left:0in;font-size:12pt;font-family:Ca=
+libri,sans-serif&quot;&gt;Action&lt;/h4&gt;
+
+&lt;p style=3D&quot;margin-right:0in;margin-left:0in;font-size:11pt;font-family:Cal=
+ibri,sans-serif&quot;&gt;Action Required&lt;/p&gt;
+
+&lt;p class=3D&quot;MsoNormal&quot; style=3D&quot;margin:0in;font-size:11pt;font-family:Calib=
+ri,sans-serif&quot;&gt;=C2=A0&lt;/p&gt;
+
+&lt;h4 style=3D&quot;margin-right:0in;margin-left:0in;font-size:12pt;font-family:Ca=
+libri,sans-serif&quot;&gt;&lt;br&gt;&lt;/h4&gt;&lt;/div&gt;
+
+--00000000000033e73005b6384aaa--</pre>
+</body>
+</html>
