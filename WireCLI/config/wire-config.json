@@ -7,29 +7,29 @@
     "UserName": "wiretest27@gmail.com",
     "Password": "sK7Wj30KCl8m",
     "Recipients": {
-      "Brian": "v-brly@microsoft.com",
-      "Connor": "v-cowhee@microsoft.com",
-      "Dean": "v-deavan@microsoft.com",
-      "Jia": "v-jiatol@mircosoft.com",
-      "Justin": "v-jukone@microsoft.com",
-      "Kalpana": "v-kalkut@microsoft.com",
-      "Katherine": "v-kagoul@microsoft.com",
-      "Ken B": "v-kenb@microsoft.com",
-      "Ken H": "v-kehagi@microsoft.com",
-      "Kolton": "v-kowall@microsoft.com",
-      "Micah": "v-micake@microsoft.com",
-      "Remone": "v-reatha@microsoft.com",
-      "Sheila": "v-sshrev@microsoft.com"
+	    "Brian Lynch": "v-brly@microsoft.com",
+	    "Connor Wheelock": "v-cowhee@microsoft.com",
+	    "Dean Avant": "v-deavan@microsoft.com",
+	    "Jiatong Li": "v-jiatol@mircosoft.com",
+	    "Justin Konersmann": "v-jukone@microsoft.com",
+	    "Kalpana kutikuppala": "v-kalkut@microsoft.com",
+	    "Katherine Montoya": "v-kagoul@microsoft.com",
+	    "Ken Baker": "v-kenb@microsoft.com",
+	    "Ken Hagist": "v-kehagi@microsoft.com",
+	    "Kolton Wall": "v-kowall@microsoft.com",
+	    "Micah Kelly": "v-micake@microsoft.com",
+	    "Remone Athanassious": "v-reatha@microsoft.com",
+	    "Sheila Shreve": "v-sshrev@microsoft.com"
     }
   },
   "VsoConfig": {
-    "BaseUri": "https://microsoft.visualstudio.com/OS",
+    "BaseUri": "https://microsoft.visualstudio.com",
     "PromptForLogin": false,
     "Token": "spfuadsqfoi627yiatxxxfkcd2kws6l37ywnm2fmescbxarqgttq",
     "ConfigItems": {
 	  "CustomString01": {
 		    "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-		    "FieldType": 1,
+		    "FieldPrefix": "Microsoft.VSTS.Common.",
 		    "FieldName": "CustomString01",
 		    "Description": "Request Team",
 		    "ValidationRegex": "^.+$",
@@ -38,7 +38,7 @@
 	  },
 	  "CustomString02": {
 		    "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-		    "FieldType": 1,
+		    "FieldPrefix": "Microsoft.VSTS.Common.",
 		    "FieldName": "CustomString02",
 		    "Description": "Request Type",
 		    "ValidationRegex": "^.+$",
@@ -47,7 +47,7 @@
 	  }, 
 	  "CustomString03": {
 		  "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-		  "FieldType": 1,
+		  "FieldPrefix": "Microsoft.VSTS.Common.",
 		  "FieldName": "CustomString03",
 		  "Description": "Toil Category",
 		  "ValidationRegex": "^.+$",
@@ -56,7 +56,7 @@
 	  }, 
 	  "CustomString04": {
         "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-        "FieldType": 1,
+        "FieldPrefix": "Microsoft.VSTS.Common.",
         "FieldName": "CustomString04",
         "Description": "Machine name (e.g. BLD14-PKG159)",
         "ValidationRegex": "^[\\w\\d\\-]+$",
@@ -65,7 +65,7 @@
       },
       "CustomString05": {
         "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-        "FieldType": 1,
+        "FieldPrefix": "Microsoft.VSTS.Common.",
         "FieldName": "CustomString05",
         "Description": "Packaging target OS that failed (e.g. blue, rs5)",
         "ValidationRegex": "^[\\w\\d]+$",
@@ -74,7 +74,7 @@
       },
       "CustomString06": {
         "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-        "FieldType": 1,
+        "FieldPrefix": "Microsoft.VSTS.Common.",
         "FieldName": "CustomString06",
         "Description": "Architecture machine was trying to process (e.g. x86)",
         "ValidationRegex": "^[\\w\\d]+$",
@@ -83,7 +83,7 @@
       },
       "CustomString07": {
         "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-        "FieldType": 1,
+        "FieldPrefix": "Microsoft.VSTS.Common.",
         "FieldName": "CustomString07",
         "Description": "Field consisting of specific value, or 'n/a' if not applicable",
         "ValidationRegex": "^WTTManual$|^DiskSpace$|^NoHeartBeat$|^LostDrive$|^wttmanual$|^diskspace$|^noheartbeat$|^lostdrive$|n/a",
@@ -92,7 +92,7 @@
       },
       "Cost": {
         "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
-        "FieldType": 1,
+        "FieldPrefix": "Microsoft.VSTS.Common.",
         "FieldName": "Cost",
         "Description": "Cost, in hours, of the work item.",
         "ValidationRegex": "^\\d*\\.*\\d+$",

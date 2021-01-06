@@ -42,6 +42,7 @@ namespace WireCLITests
             Assert.AreEqual(expected, actual);
         }
 
+        [Ignore]
         [TestMethod]
         public void Log_StateUnderTest_ExpectedBehavior()
         {
@@ -57,6 +58,7 @@ namespace WireCLITests
             Assert.Fail();
         }
 
+        [Ignore]
         [TestMethod]
         public void Report_StateUnderTest_ExpectedBehavior()
         {
@@ -72,6 +74,7 @@ namespace WireCLITests
             Assert.Fail();
         }
 
+        [Ignore]
         [TestMethod]
         public void Error_StateUnderTest_ExpectedBehavior()
         {
@@ -87,6 +90,7 @@ namespace WireCLITests
             Assert.Fail();
         }
 
+        [Ignore]
         [TestMethod]
         public void ProcessCommand_StateUnderTest_ExpectedBehavior()
         {

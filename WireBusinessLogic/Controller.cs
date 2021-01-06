@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
@@ -33,18 +32,15 @@ namespace WireBusinessLogic
     /// </summary>
     public class Controller : IWireCommunicator
     {
-        public WorkStatus State { get; private set; }
-
-        /// <summary>
-        /// Ticks per minute = 1000 milliseconds in one second, times 60 seconds
-        /// in one minute.
-        /// </summary>
-        private readonly int TICKS_PER_MINUTE = 1000 * 60;
-
         /// <summary>
         ///     The timer
         /// </summary>
         private static Timer _timer;
+
+        /// <summary>
+        ///     The configuration
+        /// </summary>
+        private readonly Configuration _configuration;
 
         /// <summary>
         ///     The email API
@@ -57,9 +53,10 @@ namespace WireBusinessLogic
         private readonly IVSOApi _vsoApi;
 
         /// <summary>
-        ///     The configuration
+        ///     Ticks per minute = 1000 milliseconds in one second, times 60 seconds
+        ///     in one minute.
         /// </summary>
-        private readonly Configuration _configuration;
+        private readonly int TICKS_PER_MINUTE = 1000 * 60;
 
         /// <summary>
         ///     The handle error
@@ -87,6 +84,8 @@ namespace WireBusinessLogic
             State.Status = StateEnum.Stopped;
             _timer = new Timer(TimerCallback, State, Timeout.Infinite, Timeout.Infinite);
         }
+
+        public WorkStatus State { get; }
 
         /// <summary>
         ///     Gets or sets the error handler.
@@ -119,18 +118,18 @@ namespace WireBusinessLogic
         }
 
         /// <summary>
-        /// Gets or sets the handler for logging operations.
+        ///     Gets or sets the handler for logging operations.
         /// </summary>
         /// <value>
-        /// The handle log.
+        ///     The handle log.
         /// </value>
         public Action<LogEntryType, string> HandleLog { get; set; }
 
         /// <summary>
-        /// Gets or sets the report operations handler.
+        ///     Gets or sets the report operations handler.
         /// </summary>
         /// <value>
-        /// The handle report.
+        ///     The handle report.
         /// </value>
         public Action<string> HandleReport { get; set; }
 
@@ -156,10 +155,10 @@ namespace WireBusinessLogic
         }
 
         /// <summary>
-        /// Logs the specified message.
+        ///     Logs the specified message.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         public void Log(LogEntryType entryType, string message)
         {
@@ -167,19 +166,24 @@ namespace WireBusinessLogic
         }
 
         /// <summary>
-        /// Reports the specified message.
+        ///     Reports the specified message.
         /// </summary>
         /// <param name="message">
-        /// The message.
+        ///     The message.
         /// </param>
         public void Report(string message)
         {
             HandleReport?.Invoke(message);
         }
 
-        public void run()
+        public void Test()
         {
-            CheckServer();
+            CheckServer(false);
+        }
+
+        public void Run()
+        {
+            CheckServer(true);
         }
 
         /// <summary>
@@ -203,23 +207,23 @@ namespace WireBusinessLogic
         /// <summary>
         ///     Checks the server.
         /// </summary>
-        public void CheckServer()
+        public void CheckServer(bool sendReminders)
         {
             _vsoApi.Connect();
             var projectList = _configuration.VsoConfig.ConfigItems.Select(
                 s => s.Value.AreaPath).Distinct().ToList();
             var assignedList = _configuration.EMailConfig.Recipients.Select(item => item.Key).ToList();
-            var records = 
+            var records =
                 _vsoApi.SelectItems(DateTime.UtcNow.AddMinutes(_configuration.ControllerConfig.ReportingInterval * -1),
-                projectList, assignedList);
-            ParseRecords(records);
+                    projectList, assignedList);
+            ParseRecords(records, sendReminders);
         }
 
         /// <summary>
         ///     Parses the records.
         /// </summary>
         /// <param name="workItems">The work items.</param>
-        private void ParseRecords(List<WorkItem> workItems)
+        private void ParseRecords(List<WorkItem> workItems, bool sendReminders)
         {
             if (workItems == null) return;
 
@@ -227,7 +231,6 @@ namespace WireBusinessLogic
             try
             {
                 foreach (var record in workItems)
-                {
                     if (record.Fields.ContainsKey(Constants.WORK_ITEM_ASSIGNED_TO))
                     {
                         var assignedTo = (IdentityRef) record.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
@@ -250,10 +253,10 @@ namespace WireBusinessLogic
                             foreach (var item in _configuration.VsoConfig.ConfigItems)
                             {
                                 var taskItem = item.Value;
-                                var searchName = (taskItem.FieldType == 0 ? "System." : "Custom.") +
-                                                 taskItem.FieldName.Trim();
+                                var searchName = taskItem.FieldPrefix + taskItem.FieldName.Trim();
 
-                                var logEntry = string.Format(Constants.LOG_REMINDER_FIELD_LINE, searchName, taskItem.Description);
+                                var logEntry = string.Format(Constants.LOG_REMINDER_FIELD_LINE, searchName,
+                                    taskItem.Description);
 
                                 if (record.Fields.ContainsKey(searchName))
                                 {
@@ -294,11 +297,14 @@ namespace WireBusinessLogic
                                 var sendMsg = $"Sending reminder to {displayName}...";
                                 Message(sendMsg);
                                 Log(LogEntryType.INFO, sendMsg);
-                                //_emailAPI.SendEmail(displayName, emailAddress, emailSubject, emailBody);
+
+                                if (sendReminders)
+                                {
+                                    _emailAPI.SendEmail(displayName, emailAddress, emailSubject, emailBody);
+                                }
                             }
                         }
                     }
-                }
 
                 if (reportLines.Length > 0)
                 {
@@ -317,10 +323,11 @@ namespace WireBusinessLogic
         /// </summary>
         public void SendReport()
         {
-            Message($"Sending log...");
+            Message("Sending log...");
 
             var reportContent = GetReportContents();
-            _emailAPI.SendEmail(_configuration.ControllerConfig.ReportEmail, _configuration.ControllerConfig.ReportEmail,
+            _emailAPI.SendEmail(_configuration.ControllerConfig.ReportEmail,
+                _configuration.ControllerConfig.ReportEmail,
                 $"WIRE report {DateTime.Now}", reportContent, false);
 
             Message($"Log sent to {_configuration.ControllerConfig.ReportEmail}.");
@@ -357,7 +364,7 @@ namespace WireBusinessLogic
             switch (currentState.Status)
             {
                 case StateEnum.Started:
-                    CheckServer();
+                    CheckServer(true);
                     break;
                 case StateEnum.Stopped:
                     _timer.Change(Timeout.Infinite, Timeout.Infinite);

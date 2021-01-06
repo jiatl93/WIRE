@@ -65,7 +65,6 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="ControllerConfig.cs" />
     <Compile Include="EMailConfig.cs" />
-    <Compile Include="FieldType.cs" />
     <Compile Include="IConfigBase.cs" />
     <Compile Include="IConfigFile.cs" />
     <Compile Include="IControllerConfig.cs" />

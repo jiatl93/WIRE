@@ -50,8 +50,8 @@ namespace WireConfigTests
             "    \"Token\": \"" + TEST_TOKEN + "\"," + Environment.NewLine +
             "    \"ConfigItems\": {" + Environment.NewLine +
             "      \"" + TEST_TASK_ITEM_1_FIELD_NAME + "\": {" + Environment.NewLine +
+            "        \"FieldPrefix\": \"" + TEST_TASK_ITEM_1_FIELD_PREFIX + "\"," + Environment.NewLine +
             "        \"AreaPath\": \"" + TEST_TASK_ITEM_1_AREA_PATH + "\"," + Environment.NewLine +
-            "        \"FieldType\": 0," + Environment.NewLine +
             "        \"FieldName\": \"" + TEST_TASK_ITEM_1_FIELD_NAME + "\"," + Environment.NewLine +
             "        \"Description\": \"" + TEST_TASK_ITEM_1_DESCRIPTION + "\"," + Environment.NewLine +
             "        \"ValidationRegex\": \"" + TEST_TASK_ITEM_1_REGEX + "\"," + Environment.NewLine +
@@ -59,8 +59,8 @@ namespace WireConfigTests
             "        \"GracePeriodInHours\": " + TEST_TASK_ITEM_1_GRACE_PERIOD + "" + Environment.NewLine +
             "      }," + Environment.NewLine +
             "      \"" + TEST_TASK_ITEM_2_FIELD_NAME + "\": {" + Environment.NewLine +
+            "        \"FieldPrefix\": \"" + TEST_TASK_ITEM_2_FIELD_PREFIX + "\"," + Environment.NewLine +
             "        \"AreaPath\": \"" + TEST_TASK_ITEM_2_AREA_PATH + "\"," + Environment.NewLine +
-            "        \"FieldType\": 1," + Environment.NewLine +
             "        \"FieldName\": \"" + TEST_TASK_ITEM_2_FIELD_NAME + "\"," + Environment.NewLine +
             "        \"Description\": \"" + TEST_TASK_ITEM_2_DESCRIPTION + "\"," + Environment.NewLine +
             "        \"ValidationRegex\": \"" + TEST_TASK_ITEM_2_REGEX + "\"," + Environment.NewLine +
@@ -134,11 +134,13 @@ namespace WireConfigTests
         /// <summary>
         /// The test task item 1 field type
         /// </summary>
-        public const FieldType TEST_TASK_ITEM_1_FIELD_TYPE = FieldType.System;
+        public const string TEST_TASK_ITEM_1_FIELD_PREFIX = "Field1Prefix";
+
         /// <summary>
         /// The test task item 1 field name
         /// </summary>
         public const string TEST_TASK_ITEM_1_FIELD_NAME = "Field1";
+
         /// <summary>
         /// The test task item 1 description
         /// </summary>
@@ -161,7 +163,7 @@ namespace WireConfigTests
         /// <summary>
         /// The test task item 2 field type
         /// </summary>
-        public const FieldType TEST_TASK_ITEM_2_FIELD_TYPE = FieldType.Custom;
+        public const string TEST_TASK_ITEM_2_FIELD_PREFIX = "Field2Prefix";
         /// <summary>
         /// The test task item 2 field name
         /// </summary>
@@ -264,7 +266,7 @@ namespace WireConfigTests
             // set up the task items
             TaskItemConfig config1 = new TaskItemConfig(
                 TEST_TASK_ITEM_1_AREA_PATH,
-                TEST_TASK_ITEM_1_FIELD_TYPE,
+                TEST_TASK_ITEM_1_FIELD_PREFIX,
                 TEST_TASK_ITEM_1_FIELD_NAME,
                 TEST_TASK_ITEM_1_DESCRIPTION,
                 TEST_TASK_ITEM_1_REGEX_NON_ESCAPED,
@@ -275,7 +277,7 @@ namespace WireConfigTests
 
             TaskItemConfig config2 = new TaskItemConfig(
                 TEST_TASK_ITEM_2_AREA_PATH,
-                TEST_TASK_ITEM_2_FIELD_TYPE,
+                TEST_TASK_ITEM_2_FIELD_PREFIX,
                 TEST_TASK_ITEM_2_FIELD_NAME,
                 TEST_TASK_ITEM_2_DESCRIPTION,
                 TEST_TASK_ITEM_2_REGEX_NON_ESCAPED,

@@ -215,6 +215,10 @@ namespace WireCLI
                     ProcessConfigCommand(command);
                     break;
 
+                case "test":
+                    ProcessTestCommand();
+                    break;
+
                 case "run":
                     ProcessRunCommand();
                     break;
@@ -250,6 +254,11 @@ namespace WireCLI
                 default:
                     return;
             }
+        }
+
+        private void ProcessTestCommand()
+        {
+            _controller.Test();
         }
 
         private void ProcessPauseCommand()
@@ -305,7 +314,7 @@ namespace WireCLI
         /// </summary>
         private void ProcessRunCommand()
         {
-            _controller.run();
+            _controller.Run();
         }
 
         /// <summary>

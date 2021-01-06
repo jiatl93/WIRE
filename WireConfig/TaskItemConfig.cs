@@ -66,19 +66,20 @@ namespace WireConfig
         private string _validationRegex;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TaskItemConfig" /> class.
+        /// Initializes a new instance of the <see cref="TaskItemConfig" /> class.
         /// </summary>
-        /// <param name="fieldType">Type of the field.</param>
+        /// <param name="areaPath">The area path.</param>
+        /// <param name="fieldPrefix">The field prefix.</param>
         /// <param name="fieldName">The Name.</param>
         /// <param name="description">The description.</param>
         /// <param name="validationRegex">The validation regex.</param>
         /// <param name="helpMessage">The help message.</param>
         /// <param name="gracePeriodInHours">The grace period in hours.</param>
-        public TaskItemConfig(string areaPath, FieldType fieldType, string fieldName, string description, string validationRegex,
+        public TaskItemConfig(string areaPath, string fieldPrefix, string fieldName, string description, string validationRegex,
             string helpMessage, int gracePeriodInHours)
         {
             AreaPath = areaPath;
-            FieldType = fieldType;
+            FieldPrefix = fieldPrefix;
             FieldName = fieldName;
             Description = description;
             ValidationRegex = validationRegex;
@@ -86,17 +87,13 @@ namespace WireConfig
             GracePeriodInHours = gracePeriodInHours;
         }
 
+        public string FieldPrefix { get; set; }
+
         /// <summary>
         ///     Gets or sets the name of the project.
         /// </summary>
         /// <value>The name of the project the field belongs to.</value>
         public string AreaPath { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the type of the field.
-        /// </summary>
-        /// <value>The type of the field.</value>
-        public FieldType FieldType { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of the field that is configured for compliance

@@ -38,7 +38,7 @@ namespace WireAPI
         /// </summary>
         private const string QUERY_FMT =
             "SELECT * FROM [WorkItems] WHERE [Work Item Type] = 'Task' " +
-            "AND [State] <> 'Done' AND [Changed Date] >= '{0}' " +
+            "AND [Changed Date] >= '{0}' " +
             "AND [Area Path] in ({1}) " +
             "AND [Assigned To] in ({2})";
 
