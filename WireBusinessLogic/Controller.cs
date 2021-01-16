@@ -299,9 +299,7 @@ namespace WireBusinessLogic
                                 Log(LogEntryType.INFO, sendMsg);
 
                                 if (sendReminders)
-                                {
                                     _emailAPI.SendEmail(displayName, emailAddress, emailSubject, emailBody);
-                                }
                             }
                         }
                     }

@@ -25,7 +25,7 @@
   "VsoConfig": {
     "BaseUri": "https://microsoft.visualstudio.com",
     "PromptForLogin": false,
-    "Token": "spfuadsqfoi627yiatxxxfkcd2kws6l37ywnm2fmescbxarqgttq",
+    "Token": "",
     "ConfigItems": {
 	  "CustomString01": {
 		    "AreaPath": "OS\\Core\\WSD\\SSD - Software Servicing Delivery\\BOOM - Build Optimization, Operations, and Media\\BEEP - Build, Packaging and BVT Ops\\Tier 1",
