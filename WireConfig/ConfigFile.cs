@@ -54,7 +54,11 @@ namespace WireConfig
         ///     The json settings
         /// </summary>
         private readonly JsonSerializerSettings _jsonSettings = new JsonSerializerSettings
-            {ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
+        {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            Formatting = Formatting.Indented,
+            ContractResolver = new EncryptedStringPropertyResolver(Constants.ENCRYPTION_KEY)
+    };
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConfigFile" /> class.
@@ -152,7 +156,7 @@ namespace WireConfig
             try
             {
                 var configString = File.ReadAllText(fileName);
-                Configuration = JsonConvert.DeserializeObject<Configuration>(configString);
+                Configuration = JsonConvert.DeserializeObject<Configuration>(configString, _jsonSettings);
             }
             catch (Exception exception)
             {
@@ -176,7 +180,7 @@ namespace WireConfig
         {
             try
             {
-                var configString = JsonConvert.SerializeObject(Configuration, Formatting.Indented, _jsonSettings);
+                var configString = JsonConvert.SerializeObject(Configuration, _jsonSettings);
                 File.WriteAllText(fileName, configString);
             }
             catch (Exception exception)

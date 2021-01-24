@@ -7,7 +7,7 @@
 // Last Modified On : 12-11-2020
 // ***********************************************************************
 // <copyright file="Constants.cs" company="WireCommon">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -30,6 +30,11 @@ namespace WireCommon
         ///     The value
         /// </summary>
         public const int VALUE = 1;
+
+        /// <summary>
+        ///     The encryption key
+        /// </summary>
+        public const string ENCRYPTION_KEY = "55sH*IXuzIxawvMvK*^1pRL#wWv8^@#Q";
 
         /// <summary>
         ///     The property set confirmation FMT
@@ -84,13 +89,49 @@ namespace WireCommon
         /// <summary>
         ///     The bad value format
         /// </summary>
-        public const string BAD_VALUE_FORMAT = "    BAD VALUE - {0}";
+        public static string REPORT_HTML_FORMAT =
+            "<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title>" +
+            Environment.NewLine +
+            "</head><body><table style=\"text-align: left; width: 100%;\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\"><tbody>" +
+            Environment.NewLine +
+            "{0}" + Environment.NewLine +
+            "</tbody></table><br></body></html>";
+
+        public static string REPORT_HEADER_HTML_FORMAT =
+            "<tr><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; background-color: blue; font-family: Helvetica,Arial,sans-serif;\">" +
+            Environment.NewLine +
+            "<span style=\"color: yellow; font-weight: bold;\"><big>User</big></span><br>" + Environment.NewLine +
+            "</td><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; background-color: blue; font-family: Helvetica,Arial,sans-serif;\">" +
+            Environment.NewLine +
+            "<span style=\"color: yellow; font-weight: bold;\"><big>Work Item</big></span><br></td></tr>" +
+            Environment.NewLine +
+            "<tr><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{0}<br>" +
+            Environment.NewLine +
+            "</td><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\"><a href=\"{1}\">{2}</a><br></td></tr>" +
+            Environment.NewLine +
+            "<tr><th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Error Type</big><br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Field Name</big><br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Description</big><br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Requirements</big><br></th></tr>" +
+            Environment.NewLine;
+
+        public static string REPORT_ROW_HTML_FORMAT =
+            "<tr><td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; text-align: center;\"><span style=\"font-weight: bold; color: red;\">{0}</span><br></td>" +
+            Environment.NewLine +
+            "<td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{1}<br></td>" +
+            Environment.NewLine +
+            "<td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{2}<br></td>" +
+            Environment.NewLine +
+            "<td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{3}<br></td></tr>";
 
         /// <summary>
         ///     The general help text displayed when the user just types 'help' with
         ///     no other parameters.
         /// </summary>
-        public static string GENERAL_HELP_TEXT = 
+        public static string GENERAL_HELP_TEXT =
             Environment.NewLine +
             "help - Gets help for a command. Syntax: help <command name>" + Environment.NewLine +
             "config - Gets or sets configuration values." + Environment.NewLine +
@@ -113,190 +154,45 @@ namespace WireCommon
         /// <summary>
         ///     The email subject format
         /// </summary>
-        public static readonly string EMAIL_SUBJECT_FORMAT = "Work Item {0} - {1}";
+        public static readonly string USER_EMAIL_SUBJECT_FORMAT = "Work Item {0} - {1}";
 
-        /// <summary>
-        ///     The email body format
-        /// </summary>
-        public static readonly string EMAIL_BODY_FORMAT =
-            "<html>" + Environment.NewLine +
-            "<head>" + Environment.NewLine +
-            "    <meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">" + Environment.NewLine +
-            "    <title></title>" + Environment.NewLine +
-            "</head>" + Environment.NewLine +
-            "<body>" + Environment.NewLine +
-            "    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "        style=\"margin: 0in; color: rgb(34, 34, 34); font-style: normal; font-weight: 400; " +
-            "letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; " +
-            "white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); " +
-            "font-size: 11pt; font-family: Calibri,sans-serif;\">" + Environment.NewLine +
-            "        Hi,<br>" + Environment.NewLine +
-            "    </p>" + Environment.NewLine +
-            "    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "        style=\"margin: 0in; color: rgb(34, 34, 34); font-style: normal; font-weight: 400; " +
-            "letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; " +
-            "white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); " +
-            "font-size: 11pt; font-family: Calibri,sans-serif;\">" + Environment.NewLine +
-            "        <br>" + Environment.NewLine +
-            "    </p>" + Environment.NewLine +
-            "    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "        style=\"margin: 0in; color: rgb(34, 34, 34); font-style: normal; font-weight: 400; " +
-            "letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; " +
-            "white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); " +
-            "font-size: 11pt; font-family: Calibri,sans-serif;\">" + Environment.NewLine +
-            "        This" + Environment.NewLine +
-            "        is an automated email concerning <a" + Environment.NewLine +
-            "            href=\"{0}\"" + Environment.NewLine +
-            "            target=\"_blank\"" + Environment.NewLine +
-            "            style=\"color: rgb(17, 85, 204); font-family: Arial,Helvetica,sans-serif; " +
-            "font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; " +
-            "text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; " +
-            "word-spacing: 0px; background-color: rgb(255, 255, 255);\">Work" + Environment.NewLine +
-            "            Item {1} - {2}</a><span" + Environment.NewLine +
-            "            style=\"color: rgb(80, 0, 80); font-family: Arial,Helvetica,sans-serif; " +
-            "font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; " +
-            "text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; " +
-            "word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; " +
-            "float: none;\"><span></span></span>," + Environment.NewLine +
-            "        in which the following errors were detected. Please address them to" + Environment.NewLine +
-            "        prevent further notifications:<br>" + Environment.NewLine +
-            "    </p>" + Environment.NewLine +
-            "    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "        style=\"margin: 0in; color: rgb(34, 34, 34); font-style: normal; font-weight: 400; " +
-            "letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; " +
-            "white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); " +
-            "font-size: 11pt; font-family: Calibri,sans-serif;\">" + Environment.NewLine +
-            "        <b></b><br>" + Environment.NewLine +
-            "    </p>" + Environment.NewLine +
-            "    <table" + Environment.NewLine +
-            "        style=\"color: rgb(34, 34, 34); font-family: Arial,Helvetica,sans-serif; font-size: small; " +
-            "font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start;" +
-            " text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; " +
-            "background-color: rgb(255, 255, 255); border-collapse: collapse;\"" + Environment.NewLine +
-            "        border=\"0\" cellpadding=\"0\" cellspacing=\"0\">" + Environment.NewLine +
-            "        <thead>" + Environment.NewLine +
-            "            <tr>" + Environment.NewLine +
-            "                <td" + Environment.NewLine +
-            "                    style=\"border: 1pt solid rgb(173, 186, 220); margin: 0px; padding: 6pt; " +
-            "background: rgb(49, 68, 114) none repeat scroll 0%; font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif; " +
-            "-moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; " +
-            "-moz-background-inline-policy: -moz-initial;\">" + Environment.NewLine +
-            "                    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "                        style=\"margin: 0in 0in 12pt; text-align: center; font-size: 11pt; " +
-            "font-family: Calibri,sans-serif;\"" + Environment.NewLine +
-            "                        align=\"center\"><b><span style=\"color: rgb(245, 209, 53);\">Error Type<br>" +
+        public static string USER_EMAIL_BODY =
+            "<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title></head>" +
             Environment.NewLine +
-            "                            </span></b></p>" + Environment.NewLine +
-            "                </td>" + Environment.NewLine +
-            "                <td" + Environment.NewLine +
-            "                    style=\"border: 1pt solid rgb(173, 186, 220); margin: 0px; padding: 6pt; " +
-            "background: rgb(49, 68, 114) none repeat scroll 0%; font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif; " +
-            "-moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; " +
-            "-moz-background-inline-policy: -moz-initial;\">" + Environment.NewLine +
-            "                    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "                        style=\"margin: 0in 0in 12pt; text-align: center; font-size: 11pt; " +
-            "font-family: Calibri,sans-serif;\"" + Environment.NewLine +
-            "                        align=\"center\"><b><span style=\"color: rgb(245, 209, 53);\">Field Name<br>" +
+            "<body><span style=\"font-family: Helvetica,Arial,sans-serif;\">This is an automated email concerning the " +
             Environment.NewLine +
-            "                            </span></b></p>" + Environment.NewLine +
-            "                </td>" + Environment.NewLine +
-            "                <td" + Environment.NewLine +
-            "                    style=\"border-style: solid solid solid none; border-color: rgb(173, 186, 220) " +
-            "rgb(173, 186, 220) rgb(173, 186, 220) -moz-use-text-color; border-width: 1pt 1pt 1pt medium; " +
-            "margin: 0px; padding: 6pt; background: rgb(49, 68, 114) none repeat scroll 0%; " +
-            "font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif; -moz-background-clip: -moz-initial; " +
-            "-moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;\">" +
+            "following error(s) detected in work item(s) assigned to you. Please address them to prevent " +
             Environment.NewLine +
-            "                    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "                        style=\"margin: 0in 0in 12pt; text-align: center; font-size: 11pt; " +
-            "font-family: Calibri,sans-serif;\"" + Environment.NewLine +
-            "                        align=\"center\"><b><span style=\"color: rgb(245, 209, 53);\">" +
-            "Description</span></b></p>" + Environment.NewLine +
-            "                </td>" + Environment.NewLine +
-            "                <td" + Environment.NewLine +
-            "                    style=\"border-style: solid solid solid none; border-color: rgb(173, 186, 220) " +
-            "rgb(173, 186, 220) rgb(173, 186, 220) -moz-use-text-color; border-width: 1pt 1pt 1pt medium; margin: 0px; " +
-            "padding: 6pt; background: rgb(49, 68, 114) none repeat scroll 0%; font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif; " +
-            "-moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; " +
-            "-moz-background-inline-policy: -moz-initial;\">" + Environment.NewLine +
-            "                    <p class=\"MsoNormal\"" + Environment.NewLine +
-            "                        style=\"margin: 0in 0in 12pt; text-align: center; font-size: 11pt; " +
-            "font-family: Calibri,sans-serif;\"" + Environment.NewLine +
-            "                        align=\"center\"><b><span style=\"color: rgb(245, 209, 53);\">Requirements</span>" +
-            "</b></p>" + Environment.NewLine +
-            "                </td>" + Environment.NewLine +
-            "            </tr>" + Environment.NewLine +
-            "        </thead>" + Environment.NewLine +
-            "        <tbody>" + Environment.NewLine +
-            "            {3}" + Environment.NewLine +
-            "        </tbody>" + Environment.NewLine +
-            "    </table>" + Environment.NewLine +
-            "    <span style=\"font-family: Calibri,sans-serif;\"><span style=\"font-weight: bold;\"></span>" +
-            "</span><span" + Environment.NewLine +
-            "        style=\"color: rgb(34, 34, 34); font-family: Arial,Helvetica,sans-serif; font-size: small; " +
-            "font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; " +
-            "text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; " +
-            "background-color: rgb(255, 255, 255); display: inline ! important; float: none;\"><br>" +
+            "further notifications. For more information please see the <a href=\"https://osgwiki.com/wiki/CSD_Ops_-_Tier_1_Request\">" +
             Environment.NewLine +
-            "        For more information please see the<span>&nbsp;</span></span><a" + Environment.NewLine +
-            "        href=\"https://osgwiki.com/wiki/CSD_Ops_-_Tier_1_Request\" target=\"_blank\"" +
+            "Tier 1 Request</a> page:</span><br>" + Environment.NewLine +
+            "<br><div><table style=\"text-align: left; width: 1495px;\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\"><tbody>" +
             Environment.NewLine +
-            "        style=\"color: rgb(17, 85, 204); font-family: Arial,Helvetica,sans-serif; font-size: small; " +
-            "font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; " +
-            "text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; " +
-            "background-color: rgb(255, 255, 255);\">Tier" + Environment.NewLine +
-            "        1 Request page</a><span" + Environment.NewLine +
-            "        style=\"color: rgb(80, 0, 80); font-family: Arial,Helvetica,sans-serif; font-size: small; " +
-            "font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; " +
-            "text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); " +
-            "display: inline ! important; float: none;\">.</span><br>" + Environment.NewLine +
-            "    <p" + Environment.NewLine +
-            "        style=\"color: rgb(34, 34, 34); font-style: normal; font-weight: 400; letter-spacing: normal; " +
-            "orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; " +
-            "word-spacing: 0px; background-color: rgb(255, 255, 255); margin-right: 0in; margin-left: 0in; font-size: 11pt; " +
-            "font-family: Calibri,sans-serif;\">" + Environment.NewLine +
-            "        Thanks!</p>" + Environment.NewLine +
-            "</body>" + Environment.NewLine +
-            "</html>";
+            "{0}</tbody></table></div></body></html>";
 
-        /// <summary>
-        ///     The email table row format
-        /// </summary>
-        public static readonly string EMAIL_TABLE_ROW_FORMAT =
-            "<tr>" + Environment.NewLine +
-            "    <td" + Environment.NewLine +
-            "        style=\"border-style: none solid solid; border-color: -moz-use-text-color rgb(173, 186, 220) " +
-            "rgb(173, 186, 220); border-width: medium 1pt 1pt; margin: 0px; padding: 6pt; font-family: Roboto,RobotoDraft," +
-            "Helvetica,Arial,sans-serif;\">" + Environment.NewLine +
-            "        <p class=\"MsoNormal\"" + Environment.NewLine +
-            "            style=\"margin: 0in 0in 12pt; font-size: 11pt; font-family: Calibri,sans-serif;\"" +
-            ">{0}</p>" + Environment.NewLine +
-            "    </td>" + Environment.NewLine +
-            "    <td" + Environment.NewLine +
-            "        style=\"border-style: none solid solid; border-color: -moz-use-text-color rgb(173, 186, 220) " +
-            "rgb(173, 186, 220); border-width: medium 1pt 1pt; margin: 0px; padding: 6pt; font-family: Roboto,RobotoDraft," +
-            "Helvetica,Arial,sans-serif;\">" + Environment.NewLine +
-            "        <p class=\"MsoNormal\"" + Environment.NewLine +
-            "            style=\"margin: 0in 0in 12pt; font-size: 11pt; font-family: Calibri,sans-serif;\"" +
-            ">{1}</p>" + Environment.NewLine +
-            "    </td>" + Environment.NewLine +
-            "    <td" + Environment.NewLine +
-            "        style=\"border-style: none solid solid none; border-color: -moz-use-text-color rgb(173, 186, 220) " +
-            "rgb(173, 186, 220) -moz-use-text-color; border-width: medium 1pt 1pt medium; margin: 0px; padding: 6pt; " +
-            "font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\">" + Environment.NewLine +
-            "        <p class=\"MsoNormal\"" + Environment.NewLine +
-            "            style=\"margin: 0in 0in 12pt; font-size: 11pt; font-family: Calibri,sans-serif;\"" +
-            ">{2}</p>" + Environment.NewLine +
-            "    </td>" + Environment.NewLine +
-            "    <td" + Environment.NewLine +
-            "        style=\"border-style: none solid solid none; border-color: -moz-use-text-color rgb(173, 186, 220) " +
-            "rgb(173, 186, 220) -moz-use-text-color; border-width: medium 1pt 1pt medium; margin: 0px; padding: 6pt; " +
-            "font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\">" + Environment.NewLine +
-            "        <p class=\"MsoNormal\"" + Environment.NewLine +
-            "            style=\"margin: 0in 0in 12pt; font-size: 11pt; font-family: Calibri,sans-serif;\"" +
-            ">{3}<br>" + Environment.NewLine +
-            "        </p>" + Environment.NewLine +
-            "    </td>" + Environment.NewLine +
-            "</tr>";
+        public static string USER_EMAIL_TASK_HEADER =
+            "<tr><td colspan=\"4\" rowspan=\"1\" style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top; background-color: blue;\">" +
+            Environment.NewLine +
+            "<span style=\"color: yellow; font-weight: bold;\">Work Item</span><br></td></tr>" + Environment.NewLine +
+            "<tr><td colspan=\"4\" rowspan=\"1\" style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">" +
+            Environment.NewLine +
+            "<a href=\"{0}\">{1}</a><br></td>" + Environment.NewLine +
+            "</tr><tr><th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Error Type<br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Field Name<br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Description<br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Requirements<br></th></tr>";
+
+        public static string USER_EMAIL_TASK_LINE_ITEM =
+            "<tr><td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top; text-align: center;\">" +
+            Environment.NewLine +
+            "<span style=\"color: red; font-weight: bold;\">{0}</span><br></td>" + Environment.NewLine +
+            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{1}<br></td>" +
+            Environment.NewLine +
+            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{2}<br></td>" +
+            Environment.NewLine +
+            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{3}<br></td></tr>";
     }
 }

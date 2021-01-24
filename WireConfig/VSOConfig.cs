@@ -154,6 +154,8 @@ namespace WireConfig
         /// </summary>
         private Action<string> _handleReport;
 
+        private string _token;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="VSOConfig" /> class.
         /// </summary>
@@ -220,6 +222,7 @@ namespace WireConfig
         ///     Gets or sets the personal authentication token used to authenticate to the VSO server.
         /// </summary>
         /// <value>The personal authentication token.</value>
+        [JsonEncrypt]
         public string Token { get; set; }
 
         /// <summary>

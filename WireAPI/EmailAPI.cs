@@ -34,7 +34,7 @@ namespace WireAPI
         /// <summary>
         ///     The mail client
         /// </summary>
-        private readonly SmtpClient _mailClient;
+        private readonly SmtpClient _smtpMailClient;
 
         /// <summary>
         ///     The is disposed
@@ -48,7 +48,7 @@ namespace WireAPI
         public EmailApi(IEMailConfig emailConfig)
         {
             _emailConfig = emailConfig;
-            _mailClient = new SmtpClient();
+            _smtpMailClient = new SmtpClient();
         }
 
         /// <summary>
@@ -73,17 +73,17 @@ namespace WireAPI
                     Text = body
                 };
 
-                _mailClient.Connect(_emailConfig.Host, _emailConfig.Port, _emailConfig.Ssl);
-                _mailClient.Authenticate(_emailConfig.UserName, _emailConfig.Password);
-                _mailClient.Send(mailMessage);
-                _mailClient.Disconnect(true);
+                _smtpMailClient.Connect(_emailConfig.Host, _emailConfig.Port, _emailConfig.Ssl);
+                _smtpMailClient.Authenticate(_emailConfig.UserName, _emailConfig.Password);
+                _smtpMailClient.Send(mailMessage);
+                _smtpMailClient.Disconnect(true);
             }
             catch (Exception e)
             {
                 Error(e);
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets the error handler.
         /// </summary>
@@ -170,6 +170,8 @@ namespace WireAPI
         /// </summary>
         ~EmailApi()
         {
+            if (_smtpMailClient.IsConnected)
+                _smtpMailClient.Disconnect(true);
             Dispose(false);
         }
 
@@ -186,7 +188,7 @@ namespace WireAPI
 
             if (disposing)
                 // free managed resources
-                _mailClient.Dispose();
+                _smtpMailClient.Dispose();
 
             isDisposed = true;
         }

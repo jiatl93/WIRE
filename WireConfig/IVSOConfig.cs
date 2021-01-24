@@ -43,7 +43,7 @@ namespace WireConfig
         /// </summary>
         /// <value>The personal authentication token.</value>
         string Token { get; set; }
-
+        
         /// <summary>
         ///     Gets the dictionary configuration items stored in this instance.
         /// </summary>

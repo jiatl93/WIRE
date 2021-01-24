@@ -186,6 +186,10 @@ namespace WireConfig
         /// </summary>
         private Action<string> _handleReport;
 
+        private string _fromEmail;
+        private string _userName;
+        private string _password;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="EMailConfig" /> class.
         /// </summary>
@@ -264,14 +268,16 @@ namespace WireConfig
         ///     Gets or sets the user name for the email server.
         /// </summary>
         /// <value>The user name for the email server.</value>
+        [JsonEncrypt]
         public string UserName { get; set; }
 
         /// <summary>
         ///     Gets or sets the password to use with the email server.
         /// </summary>
         /// <value>The password for the email server.</value>
+        [JsonEncrypt]
         public string Password { get; set; }
-
+        
         /// <summary>
         ///     Email recipients keyed by user name.
         /// </summary>

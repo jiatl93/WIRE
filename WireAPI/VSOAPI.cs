@@ -87,8 +87,8 @@ namespace WireAPI
         {
             try
             {
-                if (_credentials == null)
-                    _credentials = _vsoConfig.PromptForLogin
+                _credentials = 
+                    (_vsoConfig.PromptForLogin)
                         ? new VssClientCredentials()
                         : new VssBasicCredential(string.Empty, _vsoConfig.Token);
 

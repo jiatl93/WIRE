@@ -223,19 +223,26 @@ namespace WireBusinessLogic
         ///     Parses the records.
         /// </summary>
         /// <param name="workItems">The work items.</param>
-        private void ParseRecords(List<WorkItem> workItems, bool sendReminders)
+        private void old_ParseRecords(List<WorkItem> workItems, bool sendReminders)
         {
             if (workItems == null) return;
 
             var reportLines = new StringBuilder();
             try
             {
+                var displayName = string.Empty;
+                var fieldName = string.Empty;
+                var workItemUrl = string.Empty;
+                IdentityRef assignedTo;
+
                 foreach (var record in workItems)
+                {
                     if (record.Fields.ContainsKey(Constants.WORK_ITEM_ASSIGNED_TO))
                     {
-                        var assignedTo = (IdentityRef) record.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
-                        var displayName = assignedTo.DisplayName;
-                        var workItemUrl = record.Url.Replace("apis/wit/workItems", "workitems/edit");
+                        assignedTo = (IdentityRef) record.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
+                        displayName = assignedTo.DisplayName;
+                        fieldName = record.Fields[Constants.WORK_ITEM_TITLE].ToString();
+                        workItemUrl = record.Url.Replace("apis/wit/workItems", "workitems/edit");
 
                         if (_configuration.EMailConfig.Recipients.ContainsKey(displayName))
                         {
@@ -243,12 +250,13 @@ namespace WireBusinessLogic
                             var errorList = new StringBuilder();
 
                             var emailAddress = _configuration.EMailConfig.Recipients[displayName];
-                            var emailSubject = string.Format(Constants.EMAIL_SUBJECT_FORMAT,
+                            var emailSubject = string.Format(Constants.USER_EMAIL_SUBJECT_FORMAT,
                                 record.Id, record.Fields[Constants.WORK_ITEM_TITLE]);
                             var logReminderText =
                                 string.Format(Constants.LOG_REMINDER_HEADER, displayName, emailSubject);
                             logLines.AppendLine(logReminderText);
-                            reportLines.AppendLine(logReminderText);
+                            reportLines.AppendLine(string.Format(Constants.REPORT_HEADER_HTML_FORMAT, 
+                                assignedTo.DisplayName, workItemUrl, record.Fields[Constants.WORK_ITEM_TITLE]));
 
                             foreach (var item in _configuration.VsoConfig.ConfigItems)
                             {
@@ -257,6 +265,8 @@ namespace WireBusinessLogic
 
                                 var logEntry = string.Format(Constants.LOG_REMINDER_FIELD_LINE, searchName,
                                     taskItem.Description);
+
+                                var reportLine = string.Empty;
 
                                 if (record.Fields.ContainsKey(searchName))
                                 {
@@ -267,9 +277,13 @@ namespace WireBusinessLogic
                                             taskItem.Description, taskItem.HelpMessage
                                         );
 
+                                        reportLine = string.Format(
+                                            Constants.REPORT_ROW_HTML_FORMAT, "BAD VALUE", taskItem.FieldName,
+                                            taskItem.Description, taskItem.HelpMessage
+                                        );
+
                                         errorList.AppendLine(errorLine);
-                                        logLines.AppendLine(string.Format(Constants.BAD_VALUE_FORMAT, logEntry));
-                                        reportLines.AppendLine(string.Format(Constants.BAD_VALUE_FORMAT, logEntry));
+                                        logLines.AppendLine(string.Format(Constants.REPORT_ROW_HTML_FORMAT, logEntry));
                                     }
                                 }
                                 else
@@ -279,9 +293,14 @@ namespace WireBusinessLogic
                                         taskItem.Description, taskItem.HelpMessage
                                     );
 
+                                    reportLine = string.Format(
+                                        Constants.REPORT_ROW_HTML_FORMAT, "NO VALUE", taskItem.FieldName,
+                                        taskItem.Description, taskItem.HelpMessage
+                                    );
+
                                     errorList.AppendLine(errorLine);
                                     logLines.AppendLine(string.Format(Constants.NO_VALUE_FORMAT, logEntry));
-                                    reportLines.AppendLine(string.Format(Constants.NO_VALUE_FORMAT, logEntry));
+                                    reportLines.AppendLine(reportLine);
                                 }
                             }
 
@@ -291,7 +310,7 @@ namespace WireBusinessLogic
                             if (errorList.Length > 0)
                             {
                                 var emailBody = string.Format(Constants.EMAIL_BODY_FORMAT,
-                                    workItemUrl, record.Id, record.Fields[Constants.WORK_ITEM_TITLE], errorList
+                                    workItemUrl, record.Id, fieldName, errorList
                                 );
 
                                 var sendMsg = $"Sending reminder to {displayName}...";
@@ -303,10 +322,11 @@ namespace WireBusinessLogic
                             }
                         }
                     }
+                }
 
                 if (reportLines.Length > 0)
                 {
-                    Report(reportLines.ToString());
+                    Report(string.Format(Constants.REPORT_HTML_FORMAT, reportLines.ToString()));
                     SendReport();
                 }
             }
@@ -316,17 +336,71 @@ namespace WireBusinessLogic
             }
         }
 
+        private void ParseRecords(List<WorkItem> workItems, bool sendReminders = true)
+        {
+            /*
+            
+            foreach record in workitems
+                foreach config item 
+                    if it's present...
+                        if it fails regex test
+                            AddError as BAD VALUE
+                        endif
+                    else
+                        AddError as NO VALUE
+                    endif
+                endfor
+            endfor
+            
+            */
+        }
+
+        private void AddError(Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary, 
+            string userName, int workItemId, string workItemTitle, string workItemURL, TaskItemConfig itemConfig)
+        {
+            /*
+
+            if user is NOT in errorDictionary
+                create new entry for that user with a TaskItemErrors object
+            endif
+
+            set taskItemDictionary = user's taskItemDictionary
+            if workitemID is NOT in the taskItemDictionary
+                create new entry for workItemID in the taskItemDictionary
+            endif
+
+            set taskItemDictionary = workID's taskItemDictionary
+            add itemConfig to taskItemDictionary
+            
+            */
+        }
+
+        private void SendReminderEmails(Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary)
+        {
+            /*
+         
+            foreach taskItemDict_kvp in errorDictionary
+                foreach ---
+                    StringBuilder emailBody = new StringBuilder
+
+                    
+                endfor
+            endfor
+
+            */
+        }
+
         /// <summary>
         ///     Sends the report.
         /// </summary>
-        public void SendReport()
+        public void SendReportEmail()
         {
             Message("Sending log...");
 
             var reportContent = GetReportContents();
             _emailAPI.SendEmail(_configuration.ControllerConfig.ReportEmail,
-                _configuration.ControllerConfig.ReportEmail,
-                $"WIRE report {DateTime.Now}", reportContent, false);
+                _configuration.ControllerConfig.ReportEmail, $"WIRE report {DateTime.Now}", 
+                reportContent, true);
 
             Message($"Log sent to {_configuration.ControllerConfig.ReportEmail}.");
         }
@@ -355,6 +429,10 @@ namespace WireBusinessLogic
         {
         }
 
+        /// <summary>
+        /// Callback for checking wok items on a schedule.
+        /// </summary>
+        /// <param name="state">The state.</param>
         private void TimerCallback(object state)
         {
             var currentState = (WorkStatus) state;
