@@ -19,6 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
+using Microsoft.VisualStudio.Services.Common;
+using Microsoft.VisualStudio.Services.FileContainer;
 using Microsoft.VisualStudio.Services.WebApi;
 using WireAPI;
 using WireCommon;
@@ -209,6 +211,10 @@ namespace WireBusinessLogic
         /// </summary>
         public void CheckServer(bool sendReminders)
         {
+            Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary =
+                new Dictionary<string, Dictionary<int, TaskItemErrors>>();
+            StringBuilder reportEmailStrings = new StringBuilder();
+
             _vsoApi.Connect();
             var projectList = _configuration.VsoConfig.ConfigItems.Select(
                 s => s.Value.AreaPath).Distinct().ToList();
@@ -216,33 +222,34 @@ namespace WireBusinessLogic
             var records =
                 _vsoApi.SelectItems(DateTime.UtcNow.AddMinutes(_configuration.ControllerConfig.ReportingInterval * -1),
                     projectList, assignedList);
-            ParseRecords(records, sendReminders);
+            errorDictionary = ParseRecords(records);
+            if (sendReminders) SendReminderEmails(errorDictionary);
+            SendReportEmail(errorDictionary);
         }
 
-        /// <summary>
-        ///     Parses the records.
-        /// </summary>
-        /// <param name="workItems">The work items.</param>
-        private void old_ParseRecords(List<WorkItem> workItems, bool sendReminders)
+        private Dictionary<string, Dictionary<int, TaskItemErrors>> ParseRecords(List<WorkItem> workItems)
         {
-            if (workItems == null) return;
+            var result = new Dictionary<string, Dictionary<int, TaskItemErrors>>();
 
-            var reportLines = new StringBuilder();
-            try
+            if (workItems != null)
             {
                 var displayName = string.Empty;
                 var fieldName = string.Empty;
                 var workItemUrl = string.Empty;
                 IdentityRef assignedTo;
 
-                foreach (var record in workItems)
+                // foreach record in workitems
+                foreach (var workItem in workItems)
                 {
-                    if (record.Fields.ContainsKey(Constants.WORK_ITEM_ASSIGNED_TO))
+                    if (workItem.Id == null)
+                        continue;
+
+                    if (workItem.Fields.ContainsKey(Constants.WORK_ITEM_ASSIGNED_TO))
                     {
-                        assignedTo = (IdentityRef) record.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
+                        assignedTo = (IdentityRef) workItem.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
                         displayName = assignedTo.DisplayName;
-                        fieldName = record.Fields[Constants.WORK_ITEM_TITLE].ToString();
-                        workItemUrl = record.Url.Replace("apis/wit/workItems", "workitems/edit");
+                        fieldName = workItem.Fields[Constants.WORK_ITEM_TITLE].ToString();
+                        workItemUrl = workItem.Url.Replace("apis/wit/workItems", "workitems/edit");
 
                         if (_configuration.EMailConfig.Recipients.ContainsKey(displayName))
                         {
@@ -251,141 +258,89 @@ namespace WireBusinessLogic
 
                             var emailAddress = _configuration.EMailConfig.Recipients[displayName];
                             var emailSubject = string.Format(Constants.USER_EMAIL_SUBJECT_FORMAT,
-                                record.Id, record.Fields[Constants.WORK_ITEM_TITLE]);
-                            var logReminderText =
-                                string.Format(Constants.LOG_REMINDER_HEADER, displayName, emailSubject);
-                            logLines.AppendLine(logReminderText);
-                            reportLines.AppendLine(string.Format(Constants.REPORT_HEADER_HTML_FORMAT, 
-                                assignedTo.DisplayName, workItemUrl, record.Fields[Constants.WORK_ITEM_TITLE]));
+                                workItem.Id, workItem.Fields[Constants.WORK_ITEM_TITLE]);
 
-                            foreach (var item in _configuration.VsoConfig.ConfigItems)
+                            // foreach config item 
+                            foreach (var configItem in _configuration.VsoConfig.ConfigItems)
                             {
-                                var taskItem = item.Value;
+                                var taskItem = configItem.Value;
                                 var searchName = taskItem.FieldPrefix + taskItem.FieldName.Trim();
-
                                 var logEntry = string.Format(Constants.LOG_REMINDER_FIELD_LINE, searchName,
                                     taskItem.Description);
-
-                                var reportLine = string.Empty;
-
-                                if (record.Fields.ContainsKey(searchName))
+                                
+                                // if it's present...
+                                if (workItem.Fields.ContainsKey(searchName))
                                 {
-                                    if (!item.Value.IsValid(record.Fields[searchName]))
+                                    // if it fails regex test
+                                    if (!configItem.Value.IsValid(workItem.Fields[searchName]))
                                     {
-                                        var errorLine = string.Format(
-                                            Constants.EMAIL_TABLE_ROW_FORMAT, "BAD VALUE", taskItem.FieldName,
-                                            taskItem.Description, taskItem.HelpMessage
-                                        );
-
-                                        reportLine = string.Format(
-                                            Constants.REPORT_ROW_HTML_FORMAT, "BAD VALUE", taskItem.FieldName,
-                                            taskItem.Description, taskItem.HelpMessage
-                                        );
-
-                                        errorList.AppendLine(errorLine);
-                                        logLines.AppendLine(string.Format(Constants.REPORT_ROW_HTML_FORMAT, logEntry));
+                                        // AddError as BAD VALUE
+                                        AddError(result, true, displayName, workItem.Id.GetValueOrDefault(), 
+                                            fieldName, workItemUrl, taskItem);
+                                    }
+                                    else
+                                    {
+                                        AddError(result, false, displayName, workItem.Id.GetValueOrDefault(),
+                                            fieldName, workItemUrl, taskItem);
                                     }
                                 }
-                                else
-                                {
-                                    var errorLine = string.Format(
-                                        Constants.EMAIL_TABLE_ROW_FORMAT, "NO VALUE", taskItem.FieldName,
-                                        taskItem.Description, taskItem.HelpMessage
-                                    );
-
-                                    reportLine = string.Format(
-                                        Constants.REPORT_ROW_HTML_FORMAT, "NO VALUE", taskItem.FieldName,
-                                        taskItem.Description, taskItem.HelpMessage
-                                    );
-
-                                    errorList.AppendLine(errorLine);
-                                    logLines.AppendLine(string.Format(Constants.NO_VALUE_FORMAT, logEntry));
-                                    reportLines.AppendLine(reportLine);
-                                }
-                            }
-
-                            if (logLines.Length > 0)
-                                Log(LogEntryType.ERROR, logLines.ToString());
-
-                            if (errorList.Length > 0)
-                            {
-                                var emailBody = string.Format(Constants.EMAIL_BODY_FORMAT,
-                                    workItemUrl, record.Id, fieldName, errorList
-                                );
-
-                                var sendMsg = $"Sending reminder to {displayName}...";
-                                Message(sendMsg);
-                                Log(LogEntryType.INFO, sendMsg);
-
-                                if (sendReminders)
-                                    _emailAPI.SendEmail(displayName, emailAddress, emailSubject, emailBody);
                             }
                         }
                     }
                 }
-
-                if (reportLines.Length > 0)
-                {
-                    Report(string.Format(Constants.REPORT_HTML_FORMAT, reportLines.ToString()));
-                    SendReport();
-                }
             }
-            catch (Exception e)
-            {
-                Error(e);
-            }
+            
+            return result;
         }
 
-        private void ParseRecords(List<WorkItem> workItems, bool sendReminders = true)
-        {
-            /*
-            
-            foreach record in workitems
-                foreach config item 
-                    if it's present...
-                        if it fails regex test
-                            AddError as BAD VALUE
-                        endif
-                    else
-                        AddError as NO VALUE
-                    endif
-                endfor
-            endfor
-            
-            */
-        }
-
-        private void AddError(Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary, 
+        private void AddError(Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary, bool itemPresent,
             string userName, int workItemId, string workItemTitle, string workItemURL, TaskItemConfig itemConfig)
         {
-            /*
+            Dictionary<int, TaskItemErrors> taskItemDictionary;
 
-            if user is NOT in errorDictionary
-                create new entry for that user with a TaskItemErrors object
-            endif
+            if (errorDictionary.ContainsKey(userName))
+                taskItemDictionary = errorDictionary[userName];
+            else
+            {
+                taskItemDictionary = new Dictionary<int, TaskItemErrors>();
+                errorDictionary.Add(userName, taskItemDictionary);
+            }
 
-            set taskItemDictionary = user's taskItemDictionary
-            if workitemID is NOT in the taskItemDictionary
-                create new entry for workItemID in the taskItemDictionary
-            endif
-
-            set taskItemDictionary = workID's taskItemDictionary
-            add itemConfig to taskItemDictionary
+            TaskItemErrors taskItemErrors;
+            if  (taskItemDictionary.ContainsKey(workItemId))
+                taskItemErrors = taskItemDictionary[workItemId];
+            else
+            {
+                taskItemErrors = new TaskItemErrors(userName, workItemId, workItemTitle, workItemURL);
+                taskItemDictionary.Add(workItemId, taskItemErrors);
+            }
             
-            */
+            taskItemErrors.ErrorItems.Add(itemConfig);
         }
 
         private void SendReminderEmails(Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary)
         {
             /*
          
-            foreach taskItemDict_kvp in errorDictionary
-                foreach ---
-                    StringBuilder emailBody = new StringBuilder
+            StringBuilder reportEmail
 
-                    
+            foreach taskItemDict_kvp in errorDictionary
+                displayName = taskItemDict_kvp.Value.DisplayName
+                emailAddress = taskItemDict_kvp.Vlaue.emailAddress                
+                foreach workItem_kvp in taskItemDict_kvp.Value
+                    StringBuilder emailBody = new StringBuilder
+                    emailBody.AppendLine(format new user email task header)
+                    foreach taskItemConfig in  taskItemDict_kvp.Value.ErrorItems
+                        emailBody.AppendLine(format new user email task line item)
+                    endfor
                 endfor
+
+                string emailContent = format new user email body with emailBody sringlist
+                cache email with displayName, emailAddress, subject constant, emailContent, true                
+                reportEmail.AppendLine(emailBody.ToString)
             endfor
+
+
 
             */
         }
@@ -393,15 +348,12 @@ namespace WireBusinessLogic
         /// <summary>
         ///     Sends the report.
         /// </summary>
-        public void SendReportEmail()
+        public void SendReportEmail(Dictionary<string, Dictionary<int, TaskItemErrors>> errorDictionary)
         {
             Message("Sending log...");
 
-            var reportContent = GetReportContents();
-            _emailAPI.SendEmail(_configuration.ControllerConfig.ReportEmail,
-                _configuration.ControllerConfig.ReportEmail, $"WIRE report {DateTime.Now}", 
-                reportContent, true);
-
+            //send email with report email, report email address, formatted subject, reportEmail, true
+            
             Message($"Log sent to {_configuration.ControllerConfig.ReportEmail}.");
         }
 

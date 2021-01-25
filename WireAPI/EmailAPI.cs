@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using MailKit.Net.Smtp;
 using MimeKit;
 using WireCommon;
@@ -26,6 +27,15 @@ namespace WireAPI
     /// </summary>
     public class EmailApi : IEmailApi
     {
+
+        /// <summary>
+        /// Gets the cached email count.
+        /// </summary>
+        /// <value>
+        /// The cached email count.
+        /// </value>
+        public int CachedEmailCount => _emailCache.Count;
+
         /// <summary>
         ///     The email configuration
         /// </summary>
@@ -35,6 +45,11 @@ namespace WireAPI
         ///     The mail client
         /// </summary>
         private readonly SmtpClient _smtpMailClient;
+
+        /// <summary>
+        /// The email cache
+        /// </summary>
+        private readonly List<MimeMessage> _emailCache;
 
         /// <summary>
         ///     The is disposed
@@ -49,6 +64,7 @@ namespace WireAPI
         {
             _emailConfig = emailConfig;
             _smtpMailClient = new SmtpClient();
+            _emailCache = new List<MimeMessage>();
         }
 
         /// <summary>
@@ -73,17 +89,75 @@ namespace WireAPI
                     Text = body
                 };
 
-                _smtpMailClient.Connect(_emailConfig.Host, _emailConfig.Port, _emailConfig.Ssl);
-                _smtpMailClient.Authenticate(_emailConfig.UserName, _emailConfig.Password);
-                _smtpMailClient.Send(mailMessage);
-                _smtpMailClient.Disconnect(true);
+                SendEmail(mailMessage);
             }
             catch (Exception e)
             {
                 Error(e);
             }
         }
-        
+
+        /// <summary>
+        /// Sends the email.
+        /// </summary>
+        /// <param name="mailMessage">The mail message.</param>
+        public void SendEmail(MimeMessage mailMessage)
+        {
+            _smtpMailClient.Connect(_emailConfig.Host, _emailConfig.Port, _emailConfig.Ssl);
+            _smtpMailClient.Authenticate(_emailConfig.UserName, _emailConfig.Password);
+            _smtpMailClient.Send(mailMessage);
+            _smtpMailClient.Disconnect(true);
+        }
+
+        /// <summary>
+        /// Sends the cached emails.
+        /// </summary>
+        public void SendCachedEmails()
+        {
+            foreach (var mailMessage in _emailCache)
+            {
+                SendEmail(mailMessage);
+            }
+        }
+
+        /// <summary>
+        /// Caches the email.
+        /// </summary>
+        /// <param name="recipientName">Name of the recipient.</param>
+        /// <param name="emailAddress">The email address.</param>
+        /// <param name="subject">The subject.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
+        public void CacheEmail(string recipientName, string emailAddress, string subject, string body,
+            bool isHtml = true)
+        {
+            _emailCache.Add(CreateEmail(recipientName, emailAddress, subject, body, isHtml));
+        }
+
+        /// <summary>Creates the email.</summary>
+        /// <param name="recipientName">Name of the recipient.</param>
+        /// <param name="emailAddress">The email address.</param>
+        /// <param name="subject">The subject.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        private MimeMessage CreateEmail(string recipientName, string emailAddress, string subject, string body,
+            bool isHtml = true)
+        {
+            var mailMessage = new MimeMessage();
+            mailMessage.From.Add(new MailboxAddress("WIRE client", "no_reply@contoso.com"));
+            mailMessage.To.Add(new MailboxAddress(recipientName, emailAddress));
+            mailMessage.Subject = subject;
+            mailMessage.Body = new TextPart(isHtml ? "html" : "plain")
+            {
+                Text = body
+            };
+
+            return mailMessage;
+        }
+
         /// <summary>
         ///     Gets or sets the error handler.
         /// </summary>

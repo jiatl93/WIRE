@@ -17,10 +17,17 @@ namespace WireBusinessLogic
 
         public string WorkItemURL { get; set; }
 
+        public bool ItemPresent { get; set; }
+
         public List<TaskItemConfig> ErrorItems { get; set; }
 
-        public TaskItemErrors()
+        public TaskItemErrors(string userName, int workItemId, string workItemTitle,
+            string workItemWorkItemUrl)
         {
+            UserName = userName;
+            WorkItemID = workItemId;
+            WorkItemTitle = workItemTitle;
+            WorkItemURL = workItemWorkItemUrl;
             ErrorItems = new List<TaskItemConfig>();
         }
     }
