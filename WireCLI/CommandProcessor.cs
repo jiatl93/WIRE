@@ -214,6 +214,9 @@ namespace WireCLI
         {
             var command = new Command(commandString);
 
+            if (command.Values.Count < 1)
+                return;
+
             switch (command.Values[0])
             {
                 case "help":

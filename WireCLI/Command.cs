@@ -50,7 +50,7 @@ namespace WireCLI
             parser.TrimWhiteSpace = true;
             var commandArray = parser.ReadFields();
 
-            if (commandArray.Length > 0)
+            if (commandArray != null && commandArray.Length > 0)
             {
                 for (var i = 0; i < commandArray.Length; i++)
                 {
