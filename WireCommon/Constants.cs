@@ -72,9 +72,9 @@ namespace WireCommon
         public const string LOG_CHECK_HEADER = "Checking work items on {0}...";
 
         /// <summary>
-        ///     The log reminder header
+        ///     The log email subject format
         /// </summary>
-        public const string LOG_REMINDER_HEADER = "Composing reminder for {0}.\nItem: {1}\nFields: ";
+        public const string LOG_EMAIL_SUBJECT_FORMAT = "Most recent log as of {0:yyyy-MM-dd, HH:mm}";
 
         /// <summary>
         ///     The log reminder field line
@@ -89,29 +89,23 @@ namespace WireCommon
         /// <summary>
         ///     The bad value format
         /// </summary>
+        public const string BAD_VALUE_FORMAT = "    BAD VALUE - {0}";
+
+        /// <summary>
+        ///     The report email subject format
+        /// </summary>
+        public static string REPORT_EMAIL_SUBJECT_FORMAT = "Work Item non-compliance report {0:yyyy-MM-dd, HH:mm}";
+
+        /// <summary>
+        ///     The report HTML format
+        /// </summary>
         public static string REPORT_HTML_FORMAT =
-            "<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title>" + Environment.NewLine +
-            "</head><body><table style=\"text-align: left; width: 100%;\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\"><tbody>" +       Environment.NewLine +
+            "<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title>" +
+            Environment.NewLine +
+            "</head><body><table style=\"text-align: left; width: 100%;\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\"><tbody>" +
+            Environment.NewLine +
             "{0}" + Environment.NewLine +
             "</tbody></table><br></body></html>";
-
-        public static string REPORT_HEADER_HTML_FORMAT =
-            "<tr><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; background-color: blue; font-family: Helvetica,Arial,sans-serif;\">" + Environment.NewLine +
-            "<span style=\"color: yellow; font-weight: bold;\"><big>User</big></span><br>" + Environment.NewLine +
-            "</td><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; background-color: blue; font-family: Helvetica,Arial,sans-serif;\">" + Environment.NewLine +
-            "<span style=\"color: yellow; font-weight: bold;\"><big>Work Item</big></span><br></td></tr>" + Environment.NewLine +
-            "<tr><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{0}<br>" + Environment.NewLine +
-            "</td><td colspan=\"2\" rowspan=\"1\" style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\"><a href=\"{1}\">{2}</a><br></td></tr>" + Environment.NewLine +
-            "<tr><th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Error Type</big><br></th>" + Environment.NewLine +
-            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Field Name</big><br></th>" + Environment.NewLine +
-            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Description</big><br></th>" + Environment.NewLine +
-            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\"><big>Requirements</big><br></th></tr>" + Environment.NewLine;
-
-        public static string REPORT_ROW_HTML_FORMAT =
-            "<tr><td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; text-align: center;\"><span style=\"font-weight: bold; color: red;\">{0}</span><br></td>" + Environment.NewLine +
-            "<td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{1}<br></td>" + Environment.NewLine +
-            "<td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{2}<br></td>" + Environment.NewLine +
-            "<td style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif;\">{3}<br></td></tr>";
 
         /// <summary>
         ///     The general help text displayed when the user just types 'help' with
@@ -122,12 +116,13 @@ namespace WireCommon
             "help - Gets help for a command. Syntax: help <command name>" + Environment.NewLine +
             "config - Gets or sets configuration values." + Environment.NewLine +
             "run - Runs the process to query the VSO server, evaluate, and send reminders." + Environment.NewLine +
+            "test - Runs the process to query the VSO server, evaluate, but only sends report." + Environment.NewLine +
             "start - Starts the VSO query process to run at the configured interval." + Environment.NewLine +
             "stop - Stops the timed running of the VSO query process." + Environment.NewLine +
             "pause - Toggles pausing the timed query process." + Environment.NewLine +
             "print - Prints the most recent report to the screen." + Environment.NewLine +
             "clear - Clears the specified list dictionary config item." + Environment.NewLine +
-            "send - Sends the most recent report to the configured report email address." + Environment.NewLine +
+            "send - Sends the most recent report or log to the configured report email address." + Environment.NewLine +
             "status - Gets the status of the query process - i.e., running, stopped, or paused." + Environment.NewLine;
 
         /// <summary>
@@ -140,32 +135,54 @@ namespace WireCommon
         /// <summary>
         ///     The email subject format
         /// </summary>
-        public static readonly string USER_EMAIL_SUBJECT_FORMAT = "Work Item {0} - {1}";
+        public static readonly string USER_EMAIL_SUBJECT = "Work Item(s) in need of correction";
 
+        /// <summary>
+        ///     The user email body
+        /// </summary>
         public static string USER_EMAIL_BODY =
-            "<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title></head>" + Environment.NewLine +
-            "<body><span style=\"font-family: Helvetica,Arial,sans-serif;\">This is an automated email concerning the " + Environment.NewLine +
-            "following error(s) detected in work item(s) assigned to you. Please address them to prevent " + Environment.NewLine +
-            "further notifications. For more information please see the <a href=\"https://osgwiki.com/wiki/CSD_Ops_-_Tier_1_Request\">" + Environment.NewLine +
+            "<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title></head>" +
+            Environment.NewLine +
+            "<body><span style=\"font-family: Helvetica,Arial,sans-serif;\">This is an automated email concerning the " +
+            Environment.NewLine +
+            "following error(s) detected in work item(s) assigned to you. Please address them to prevent " +
+            Environment.NewLine +
+            "further notifications. For more information please see the <a href=\"https://osgwiki.com/wiki/CSD_Ops_-_Tier_1_Request\">" +
+            Environment.NewLine +
             "Tier 1 Request</a> page:</span><br>" + Environment.NewLine +
-            "<br><div><table style=\"text-align: left; width: 1495px;\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\"><tbody>" + Environment.NewLine +
+            "<br><div><table style=\"text-align: left; width: 1495px;\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\"><tbody>" +
+            Environment.NewLine +
             "{0}</tbody></table></div></body></html>";
 
+        /// <summary>
+        ///     The user email task header
+        /// </summary>
         public static string USER_EMAIL_TASK_HEADER =
-            "<tr><td colspan=\"4\" rowspan=\"1\" style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top; background-color: blue;\">" + Environment.NewLine +
+            "<tr><td colspan=\"4\" rowspan=\"1\" style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top; background-color: blue;\">" +
+            Environment.NewLine +
             "<span style=\"color: yellow; font-weight: bold;\">Work Item</span><br></td></tr>" + Environment.NewLine +
-            "<tr><td colspan=\"4\" rowspan=\"1\" style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">" + Environment.NewLine +
+            "<tr><td colspan=\"4\" rowspan=\"1\" style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">" +
+            Environment.NewLine +
             "<a href=\"{0}\">{1}</a><br></td>" + Environment.NewLine +
-            "</tr><tr><th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Error Type<br></th>" + Environment.NewLine +
-            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Field Name<br></th>" + Environment.NewLine +
-            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Description<br></th>" + Environment.NewLine +
+            "</tr><tr><th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Error Type<br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Field Name<br></th>" +
+            Environment.NewLine +
+            "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Description<br></th>" +
+            Environment.NewLine +
             "<th style=\"vertical-align: top; font-family: Helvetica,Arial,sans-serif; background-color: blue; color: yellow; font-weight: bold;\">Requirements<br></th></tr>";
 
+        /// <summary>
+        ///     The user email task line item
+        /// </summary>
         public static string USER_EMAIL_TASK_LINE_ITEM =
-            "<tr><td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top; text-align: center;\">" + Environment.NewLine +
+            "<tr><td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top; text-align: center;\">" +
+            Environment.NewLine +
             "<span style=\"color: red; font-weight: bold;\">{0}</span><br></td>" + Environment.NewLine +
-            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{1}<br></td>" + Environment.NewLine +
-            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{2}<br></td>" + Environment.NewLine +
+            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{1}<br></td>" +
+            Environment.NewLine +
+            "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{2}<br></td>" +
+            Environment.NewLine +
             "<td style=\"margin: 0px; font-family: Helvetica,Arial,sans-serif; vertical-align: top;\">{3}<br></td></tr>";
     }
 }

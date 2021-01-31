@@ -37,6 +37,9 @@ namespace WireCLI
         /// </summary>
         private readonly Controller _controller;
 
+        /// <summary>
+        ///     The email API
+        /// </summary>
         private readonly IEmailApi _emailAPI;
 
         /// <summary>
@@ -49,6 +52,9 @@ namespace WireCLI
         /// </summary>
         private Action<Exception> _handleError;
 
+        /// <summary>
+        ///     Backing field for the log handler action.
+        /// </summary>
         private Action<LogEntryType, string> _handleLog;
 
         /// <summary>
@@ -56,6 +62,9 @@ namespace WireCLI
         /// </summary>
         private Action<string> _handleMessage;
 
+        /// <summary>
+        ///     Backing field for the report handler action.
+        /// </summary>
         private Action<string> _handleReport;
 
         /// <summary>
@@ -244,7 +253,7 @@ namespace WireCLI
                     break;
 
                 case "send":
-                    ProcessSendCommand();
+                    ProcessSendCommand(command);
                     break;
 
                 case "status":
@@ -256,16 +265,48 @@ namespace WireCLI
             }
         }
 
+        /// <summary>
+        ///     Processes the send command.
+        /// </summary>
+        /// <param name="command">The send command.</param>
+        private void ProcessSendCommand(Command command)
+        {
+            if (command.Values.Count == 1)
+            {
+                Error(new Exception("'send' must be followed by 'log' or 'report'"));
+            }
+            else
+            {
+                var sendParameter = command.Values[1].Trim().ToLower();
+
+                if (sendParameter == "log")
+                    ProcessSendLogCommand();
+                else if (sendParameter == "report")
+                    ProcessSendReportCommand();
+                else
+                    Error(new Exception($"send: unrecognized parameter '{sendParameter}'"));
+            }
+        }
+
+        /// <summary>
+        ///     Processes the test command.
+        /// </summary>
         private void ProcessTestCommand()
         {
             _controller.Test();
         }
 
+        /// <summary>
+        ///     Processes the pause command.
+        /// </summary>
         private void ProcessPauseCommand()
         {
             _controller.Pause();
         }
 
+        /// <summary>
+        ///     Processes the status command.
+        /// </summary>
         private void ProcessStatusCommand()
         {
             switch (_controller.State.Status)
@@ -285,16 +326,33 @@ namespace WireCLI
             Message($"Reporting Interval: {_configFile.Configuration.ControllerConfig.ReportingInterval} minutes");
         }
 
-        private void ProcessSendCommand()
+        /// <summary>
+        ///     Processes the send log command.
+        /// </summary>
+        private void ProcessSendLogCommand()
         {
-            _controller.SendReport();
+            _controller.SendMostRecentLog();
         }
 
+        /// <summary>
+        ///     Processes the send report command.
+        /// </summary>
+        private void ProcessSendReportCommand()
+        {
+            _controller.SendMostRecentReport();
+        }
+
+        /// <summary>
+        ///     Processes the print command.
+        /// </summary>
         private void ProcessPrintCommand()
         {
-            Message(_controller.GetReportContents());
+            Message(_controller.GetLogContents());
         }
 
+        /// <summary>
+        ///     Processes the stop command.
+        /// </summary>
         private void ProcessStopCommand()
         {
             Message("Stopping...");
@@ -302,6 +360,9 @@ namespace WireCLI
             Message("Stopped");
         }
 
+        /// <summary>
+        ///     Processes the start command.
+        /// </summary>
         private void ProcessStartCommand()
         {
             Message("Starting...");

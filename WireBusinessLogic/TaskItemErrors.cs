@@ -17,9 +17,7 @@ namespace WireBusinessLogic
 
         public string WorkItemURL { get; set; }
 
-        public bool ItemPresent { get; set; }
-
-        public List<TaskItemConfig> ErrorItems { get; set; }
+        public List<Tuple<TaskItemConfig, bool>> ErrorItems { get; }
 
         public TaskItemErrors(string userName, int workItemId, string workItemTitle,
             string workItemWorkItemUrl)
@@ -28,7 +26,13 @@ namespace WireBusinessLogic
             WorkItemID = workItemId;
             WorkItemTitle = workItemTitle;
             WorkItemURL = workItemWorkItemUrl;
-            ErrorItems = new List<TaskItemConfig>();
+            ErrorItems = new List<Tuple<TaskItemConfig, bool>>();
         }
+
+        public void AddErrorItem(TaskItemConfig errorItem, bool hasValueForField)
+        {
+            ErrorItems.Add(new Tuple<TaskItemConfig, bool>(errorItem, hasValueForField));
+        }
+
     }
 }

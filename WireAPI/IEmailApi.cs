@@ -56,5 +56,9 @@ namespace WireAPI
         /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         void CacheEmail(string recipientName, string emailAddress, string subject, string body, bool isHtml = true);
 
+        /// <summary>
+        /// Clears the email cache.
+        /// </summary>
+        void ClearCache();
     }
 }

@@ -80,15 +80,7 @@ namespace WireAPI
         {
             try
             {
-                var mailMessage = new MimeMessage();
-                mailMessage.From.Add(new MailboxAddress("WIRE client", "no_reply@contoso.com"));
-                mailMessage.To.Add(new MailboxAddress(recipientName, emailAddress));
-                mailMessage.Subject = subject;
-                mailMessage.Body = new TextPart(isHtml ? "html" : "plain")
-                {
-                    Text = body
-                };
-
+                var mailMessage = CreateEmail(recipientName, emailAddress, subject, body, isHtml);
                 SendEmail(mailMessage);
             }
             catch (Exception e)
@@ -103,6 +95,10 @@ namespace WireAPI
         /// <param name="mailMessage">The mail message.</param>
         public void SendEmail(MimeMessage mailMessage)
         {
+            var msg = $"Sending email to {mailMessage.To[0].Name}";
+            Log(LogEntryType.INFO, msg);
+            Message(msg);
+
             _smtpMailClient.Connect(_emailConfig.Host, _emailConfig.Port, _emailConfig.Ssl);
             _smtpMailClient.Authenticate(_emailConfig.UserName, _emailConfig.Password);
             _smtpMailClient.Send(mailMessage);
@@ -118,6 +114,8 @@ namespace WireAPI
             {
                 SendEmail(mailMessage);
             }
+
+            ClearCache();
         }
 
         /// <summary>
@@ -156,6 +154,11 @@ namespace WireAPI
             };
 
             return mailMessage;
+        }
+
+        public void ClearCache()
+        {
+            _emailCache.Clear();
         }
 
         /// <summary>
