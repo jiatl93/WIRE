@@ -45,9 +45,9 @@ namespace WireConfigTests
             var configFile = new ConfigFile();
             ConfigFileTestCommon.SetupConfigFile(configFile.FileName);
             // DEBUG-------------------------------------------------------
-            //ConfigFileTestCommon.SetupConfigFile(@"h:\temp\expected.json");
-            //ConfigFileTestCommon.SetupConfigObject(configFile.Configuration);
-            //configFile.Save(@"h:\temp\actual.json");
+            // ConfigFileTestCommon.SetupConfigFile(@"h:\temp\expected.json");
+            // ConfigFileTestCommon.SetupConfigObject(configFile.Configuration);
+            // configFile.Save(@"h:\temp\actual.json");
             // DEBUG-------------------------------------------------------
 
             // Act
@@ -81,14 +81,16 @@ namespace WireConfigTests
         public void Save_StateUnderTest_ExpectedBehavior_Default_File_Name()
         {
             // Arrange
-            var configFile = new ConfigFile();
-            ConfigFileTestCommon.SetupConfigObject(configFile.Configuration);
+            var configFileWrite = new ConfigFile();
+            var configFileRead = new ConfigFile();
+            ConfigFileTestCommon.SetupConfigObject(configFileWrite.Configuration);
 
             // Act
-            configFile.Save();
+            configFileWrite.Save();
+            configFileRead.Load();
 
             // Assert
-            AssertConfigFileText(configFile.FileName);
+            AssertConfigContents(configFileRead.Configuration);
         }
 
         /// <summary>
@@ -98,15 +100,17 @@ namespace WireConfigTests
         public void Save_StateUnderTest_ExpectedBehavior_Supplied_File_Name()
         {
             // Arrange
-            var configFile = new ConfigFile();
+            var configFileWrite = new ConfigFile();
+            var configFileRead = new ConfigFile();
             ConfigFileTestCommon.SetupConfigFile(ConfigFileTestCommon.SUPPLIED_FILE_NAME);
-            ConfigFileTestCommon.SetupConfigObject(configFile.Configuration);
+            ConfigFileTestCommon.SetupConfigObject(configFileWrite.Configuration);
 
             // Act
-            configFile.Save(ConfigFileTestCommon.SUPPLIED_FILE_NAME);
+            configFileWrite.Save(ConfigFileTestCommon.SUPPLIED_FILE_NAME);
+            configFileRead.Load(ConfigFileTestCommon.SUPPLIED_FILE_NAME);
 
             // Assert
-            AssertConfigFileText(configFile.FileName);
+            AssertConfigContents(configFileRead.Configuration);
         }
 
         /// <summary>
@@ -163,17 +167,6 @@ namespace WireConfigTests
 
             // Assert
             Assert.IsFalse(string.IsNullOrEmpty(errorText));
-        }
-
-        // helper methods
-        /// <summary>
-        /// Asserts the configuration file text.
-        /// </summary>
-        /// <param name="configFileFileName">Name of the configuration file.</param>
-        public void AssertConfigFileText(string configFileFileName)
-        {
-            var fileText = File.ReadAllText(configFileFileName);
-            Assert.AreEqual(fileText, ConfigFileTestCommon.CONFIG_TEST_FILE);
         }
 
         /// <summary>

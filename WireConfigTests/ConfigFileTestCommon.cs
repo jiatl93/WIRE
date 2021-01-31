@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WireCommon;
 using WireConfig;
 
 namespace WireConfigTests
@@ -27,6 +28,11 @@ namespace WireConfigTests
     /// </summary>
     public static class ConfigFileTestCommon
     {
+        static ConfigFileTestCommon()
+        {
+            AesProvider.EncryptionKey = Constants.ENCRYPTION_KEY;
+        }
+
         /// <summary>
         /// The configuration test file
         /// </summary>
@@ -37,8 +43,8 @@ namespace WireConfigTests
             "    \"Port\": " + TEST_PORT + "," + Environment.NewLine +
             "    \"Ssl\": true," + Environment.NewLine +
             "    \"FromEmail\": \"" + TEST_FROM_EMAIL + "\"," + Environment.NewLine +
-            "    \"UserName\": \"" + TEST_USER_NAME + "\"," + Environment.NewLine +
-            "    \"Password\": \"" + TEST_PASSWORD + "\"," + Environment.NewLine +
+            "    \"UserName\": \"" + AesProvider.Encrypt(TEST_USER_NAME) + "\"," + Environment.NewLine +
+            "    \"Password\": \"" + AesProvider.Encrypt(TEST_PASSWORD) + "\"," + Environment.NewLine +
             "    \"Recipients\": {" + Environment.NewLine +
             "      \"" + TEST_RECIPIENT_1_NAME + "\": \"" + TEST_RECIPIENT_1_EMAIL + "\"," + Environment.NewLine +
             "      \"" + TEST_RECIPIENT_2_NAME + "\": \"" + TEST_RECIPIENT_2_EMAIL + "\"" + Environment.NewLine +
@@ -47,7 +53,7 @@ namespace WireConfigTests
             "  \"VsoConfig\": {" + Environment.NewLine +
             "    \"BaseUri\": \"" + TEST_BASE_URI + "\"," + Environment.NewLine +
             "    \"PromptForLogin\": true," + Environment.NewLine +
-            "    \"Token\": \"" + TEST_TOKEN + "\"," + Environment.NewLine +
+            "    \"Token\": \"" + AesProvider.Encrypt(TEST_TOKEN) + "\"," + Environment.NewLine +
             "    \"ConfigItems\": {" + Environment.NewLine +
             "      \"" + TEST_TASK_ITEM_1_FIELD_NAME + "\": {" + Environment.NewLine +
             "        \"FieldPrefix\": \"" + TEST_TASK_ITEM_1_FIELD_PREFIX + "\"," + Environment.NewLine +

@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using WireCommon;
 
 /// <summary>
 ///     Attribute for use with Newtonsoft JSON to encrypt/decrypt
@@ -25,26 +26,16 @@ public class JsonEncryptAttribute : Attribute
 public class EncryptedStringPropertyResolver : DefaultContractResolver
 {
     /// <summary>
-    ///     The encryption key bytes
-    /// </summary>
-    private readonly byte[] encryptionKeyBytes;
-
-    /// <summary>
     ///     Initializes a new instance of the <see cref="EncryptedStringPropertyResolver" /> class.
     /// </summary>
     /// <param name="encryptionKey">The encryption key.</param>
     /// <exception cref="ArgumentNullException">encryptionKey</exception>
     public EncryptedStringPropertyResolver(string encryptionKey)
     {
-        if (encryptionKey == null)
+        if (string.IsNullOrEmpty(encryptionKey))
             throw new ArgumentNullException("encryptionKey");
 
-        // Hash the key to ensure it is exactly 256 bits long, as required by AES-256
-        using (var sha = new SHA256Managed())
-        {
-            encryptionKeyBytes =
-                sha.ComputeHash(Encoding.UTF8.GetBytes(encryptionKey));
-        }
+        AesProvider.EncryptionKey = encryptionKey;
     }
 
     /// <summary>
@@ -66,7 +57,7 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
             var pi = type.GetProperty(prop.UnderlyingName);
             if (pi != null && pi.GetCustomAttribute(typeof(JsonEncryptAttribute), true) != null)
                 prop.ValueProvider =
-                    new EncryptedStringValueProvider(pi, encryptionKeyBytes);
+                    new EncryptedStringValueProvider(pi);
         }
 
         return props;
@@ -77,18 +68,15 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
     /// </summary>
     private class EncryptedStringValueProvider : IValueProvider
     {
-        private readonly byte[] encryptionKey;
         private readonly PropertyInfo targetProperty;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EncryptedStringValueProvider" /> class.
         /// </summary>
         /// <param name="targetProperty">The target property.</param>
-        /// <param name="encryptionKey">The encryption key.</param>
-        public EncryptedStringValueProvider(PropertyInfo targetProperty, byte[] encryptionKey)
+        public EncryptedStringValueProvider(PropertyInfo targetProperty)
         {
             this.targetProperty = targetProperty;
-            this.encryptionKey = encryptionKey;
         }
 
         /// <summary>
@@ -102,25 +90,8 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
         /// </returns>
         public object GetValue(object target)
         {
-            var value = (string) targetProperty.GetValue(target);
-            var buffer = Encoding.UTF8.GetBytes(value);
-
-            using (var inputStream = new MemoryStream(buffer, false))
-            using (var outputStream = new MemoryStream())
-            using (var aes = new AesManaged {Key = encryptionKey})
-            {
-                var iv = aes.IV; // first access generates a new IV
-                outputStream.Write(iv, 0, iv.Length);
-                outputStream.Flush();
-
-                var encryptor = aes.CreateEncryptor(encryptionKey, iv);
-                using (var cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
-                {
-                    inputStream.CopyTo(cryptoStream);
-                }
-
-                return Convert.ToBase64String(outputStream.ToArray());
-            }
+            string plainText = (string) targetProperty.GetValue(target);
+            return AesProvider.Encrypt(plainText);
         }
 
         /// <summary>
@@ -133,25 +104,8 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
         /// <exception cref="CryptographicException">IV is missing or invalid.</exception>
         public void SetValue(object target, object value)
         {
-            var buffer = Convert.FromBase64String((string) value);
-
-            using (var inputStream = new MemoryStream(buffer, false))
-            using (var outputStream = new MemoryStream())
-            using (var aes = new AesManaged {Key = encryptionKey})
-            {
-                var iv = new byte[16];
-                var bytesRead = inputStream.Read(iv, 0, 16);
-                if (bytesRead < 16) throw new CryptographicException("IV is missing or invalid.");
-
-                var decryptor = aes.CreateDecryptor(encryptionKey, iv);
-                using (var cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))
-                {
-                    cryptoStream.CopyTo(outputStream);
-                }
-
-                var decryptedValue = Encoding.UTF8.GetString(outputStream.ToArray());
-                targetProperty.SetValue(target, decryptedValue);
-            }
+            string cryptText = (string) value;
+            targetProperty.SetValue(target, AesProvider.Decrypt(cryptText));
         }
     }
 }
