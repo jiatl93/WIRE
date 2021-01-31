@@ -1,4 +1,18 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : WireCli
+// Author           : jiatli93
+// Created          : 01-15-2021
+//
+// Last Modified By : jiatli93
+// Last Modified On : 01-31-2021
+// ***********************************************************************
+// <copyright file="AesProvider.cs" company="Red Clay">
+//     ${AuthorCopyright}
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,6 +24,10 @@ namespace WireCommon
     /// </summary>
     public class AesProvider
     {
+        private const string IV_ERROR = "IV is missing or invalid";
+
+        private const string KEY_ERROR = "Encryption Key not set";
+
         /// <summary>
         ///     The encryption key bytes
         /// </summary>
@@ -49,7 +67,7 @@ namespace WireCommon
         public static string Encrypt(string plainText)
         {
             if (string.IsNullOrEmpty(_encryptionKey))
-                throw new CryptographicException("Encryption Key not set.");
+                throw new CryptographicException(KEY_ERROR);
 
             var buffer = Encoding.UTF8.GetBytes(plainText);
 
@@ -80,7 +98,7 @@ namespace WireCommon
         public static string Decrypt(string cryptText)
         {
             if (string.IsNullOrEmpty(_encryptionKey))
-                throw new CryptographicException("Encryption Key not set.");
+                throw new CryptographicException(KEY_ERROR);
 
             var buffer = Convert.FromBase64String(cryptText);
 
@@ -90,7 +108,7 @@ namespace WireCommon
             {
                 var iv = new byte[16];
                 var bytesRead = inputStream.Read(iv, 0, 16);
-                if (bytesRead < 16) throw new CryptographicException("IV is missing or invalid.");
+                if (bytesRead < 16) throw new CryptographicException(IV_ERROR);
 
                 var decryptor = aes.CreateDecryptor(_keyBytes, iv);
                 using (var cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))

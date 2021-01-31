@@ -30,7 +30,7 @@ namespace WireCommon
         /// <summary>
         ///     The report file name format
         /// </summary>
-        private const string REPORT_FILE_NAME_FORMAT = "wire-report_{0:yyyy-MM-dd_HH-mm-ss}.txt";
+        private const string REPORT_FILE_NAME_FORMAT = "wire-report_{0:yyyy-MM-dd_HH-mm-ss}.html";
 
         /// <summary>
         ///     The log entry format
@@ -50,7 +50,7 @@ namespace WireCommon
         /// <summary>
         ///     The report file pattern
         /// </summary>
-        public const string REPORT_FILE_PATTERN = "wire-report_*.txt";
+        public const string REPORT_FILE_PATTERN = "wire-report_*.html";
 
         /// <summary>
         ///     The log folder

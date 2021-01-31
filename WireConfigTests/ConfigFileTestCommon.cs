@@ -135,6 +135,9 @@ namespace WireConfigTests
         /// </summary>
         public const string TEST_TOKEN = "806D5FE592584CFBAD117F8930A331AE";
 
+        /// <summary>
+        /// The test task item 1 area path
+        /// </summary>
         public const string TEST_TASK_ITEM_1_AREA_PATH = "AreaPath1";
 
         /// <summary>
