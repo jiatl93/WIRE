@@ -99,8 +99,23 @@ namespace WireCommon
         {
             if (string.IsNullOrEmpty(_encryptionKey))
                 throw new CryptographicException(KEY_ERROR);
+            
+            byte[] buffer;
 
-            var buffer = Convert.FromBase64String(cryptText);
+            // The text may not start out encrypted, so we need to check...
+            try
+            {
+                buffer = Convert.FromBase64String(cryptText);
+            }
+            catch (System.FormatException)
+            {
+                return cryptText;
+            }
+
+            // it could still accientally be base 64, so we also need to check if its
+            // length is a multiple of 128 bits (16 bytes)
+            if (buffer.Length % 16 != 0 || buffer.Length < 16)
+                return cryptText;
 
             using (var inputStream = new MemoryStream(buffer, false))
             using (var outputStream = new MemoryStream())
