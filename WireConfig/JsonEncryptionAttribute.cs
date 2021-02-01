@@ -1,10 +1,22 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : WireConfig
+// Author           : jiatli93
+// Created          : 11-29-2020
+//
+// Last Modified By : jiatli93
+// Last Modified On : 12-11-2020
+// ***********************************************************************
+// <copyright file="JsonEncryptAttribute.cs" company="Red Clay">
+//     Copyright ©2020 RedClay LLC. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
-using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using WireCommon;
@@ -90,7 +102,7 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
         /// </returns>
         public object GetValue(object target)
         {
-            string plainText = (string) targetProperty.GetValue(target);
+            var plainText = (string) targetProperty.GetValue(target);
             return AesProvider.Encrypt(plainText);
         }
 
@@ -104,7 +116,7 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
         /// <exception cref="CryptographicException">IV is missing or invalid.</exception>
         public void SetValue(object target, object value)
         {
-            string cryptText = (string) value;
+            var cryptText = (string) value;
             targetProperty.SetValue(target, AesProvider.Decrypt(cryptText));
         }
     }

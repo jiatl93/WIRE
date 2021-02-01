@@ -7,7 +7,7 @@
 // Last Modified On : 01-31-2021
 // ***********************************************************************
 // <copyright file="AesProvider.cs" company="Red Clay">
-//     ${AuthorCopyright}
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

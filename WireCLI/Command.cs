@@ -7,7 +7,7 @@
 // Last Modified On : 11-15-2020
 // ***********************************************************************
 // <copyright file="Command.cs" company="Red Clay">
-//     ${AuthorCopyright}
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

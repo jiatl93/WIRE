@@ -1,13 +1,13 @@
 ﻿// ***********************************************************************
 // Assembly         : WireBusinessLogic
-// Author           : wingf
+// Author           : jiatli93
 // Created          : 12-15-2020
 //
-// Last Modified By : wingf
+// Last Modified By : jiatli93
 // Last Modified On : 12-15-2020
 // ***********************************************************************
 // <copyright file="WorkStatus.cs" company="">
-//     Copyright ©  2020
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

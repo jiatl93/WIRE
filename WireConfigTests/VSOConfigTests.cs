@@ -7,51 +7,49 @@
 // Last Modified On : 12-09-2020
 // ***********************************************************************
 // <copyright file="VSOConfigTests.cs" company="Red Clay">
-//     Copyright ©  2020
+//    Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
+
 using System;
-using WireCommon;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WireConfig;
 
 namespace WireConfigTests
 {
     /// <summary>
-    /// Defines test class VSOConfigTests.
+    ///     Defines test class VSOConfigTests.
     /// </summary>
     [TestClass]
     public class VSOConfigTests
     {
         /// <summary>
-        /// The configuration error text
+        ///     The configuration error text
         /// </summary>
         private string configErrorText;
 
         /// <summary>
-        /// Tests the initialize.
+        ///     Tests the initialize.
         /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
-
         }
 
         /// <summary>
-        /// Creates the vso configuration.
+        ///     Creates the vso configuration.
         /// </summary>
         /// <returns>VSOConfig.</returns>
         private VSOConfig CreateVSOConfig()
         {
-            VSOConfig result = new VSOConfig();
-            result.HandleError = (e) => configErrorText = e.Message;
+            var result = new VSOConfig();
+            result.HandleError = e => configErrorText = e.Message;
             return result;
         }
 
         /// <summary>
-        /// Defines the test method Init_StateUnderTest_ExpectedBehavior.
+        ///     Defines the test method Init_StateUnderTest_ExpectedBehavior.
         /// </summary>
         [TestMethod]
         public void Init_StateUnderTest_ExpectedBehavior()
@@ -60,7 +58,7 @@ namespace WireConfigTests
             configErrorText = null;
 
             // Act - calls Init() in the constructor
-            var vsoConfig = this.CreateVSOConfig();
+            var vsoConfig = CreateVSOConfig();
 
             // Assert
             Assert.AreEqual(4, vsoConfig.Settings.Count);
@@ -69,15 +67,15 @@ namespace WireConfigTests
 
         //PromptForLogin
         /// <summary>
-        /// Defines the test method Assignment_Error_PromptForLogin.
+        ///     Defines the test method Assignment_Error_PromptForLogin.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(System.FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void Assignment_Error_PromptForLogin()
         {
             // Arrange
             configErrorText = null;
-            var vsoConfig = this.CreateVSOConfig();
+            var vsoConfig = CreateVSOConfig();
 
             // Act
             vsoConfig.SetValue(VSOConfig.PROMPT_FOR_LOGIN_KEY, "X");
@@ -87,7 +85,7 @@ namespace WireConfigTests
 
         //ConfigItems
         /// <summary>
-        /// Defines the test method Assignment_Error_Recipient.
+        ///     Defines the test method Assignment_Error_Recipient.
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
@@ -95,7 +93,7 @@ namespace WireConfigTests
         {
             // Arrange
             configErrorText = null;
-            var vsoConfig = this.CreateVSOConfig();
+            var vsoConfig = CreateVSOConfig();
 
             // Act
             vsoConfig.SetValue(VSOConfig.CONFIGITEMS_KEY,

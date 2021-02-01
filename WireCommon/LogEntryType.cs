@@ -1,13 +1,13 @@
 ﻿// ***********************************************************************
 // Assembly         : WireCommon
-// Author           : wingf
+// Author           : jiatli93
 // Created          : 12-23-2020
 //
-// Last Modified By : wingf
+// Last Modified By : jiatli93
 // Last Modified On : 12-23-2020
 // ***********************************************************************
 // <copyright file="LogEntryType.cs" company="WireCommon">
-//     Copyright (c) . All rights reserved.
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -20,27 +20,27 @@ namespace WireCommon
     public enum LogEntryType
     {
         /// <summary>
-        ///     The debug
+        ///     Debug entry
         /// </summary>
         DEBUG,
 
         /// <summary>
-        ///     The information
+        ///     Information entry
         /// </summary>
         INFO,
 
         /// <summary>
-        ///     The warning
+        ///     Warning entry
         /// </summary>
         WARNING,
 
         /// <summary>
-        ///     The error
+        ///     Error entry
         /// </summary>
         ERROR,
 
         /// <summary>
-        ///     The fatal
+        ///     Fatal entry
         /// </summary>
         FATAL
     }

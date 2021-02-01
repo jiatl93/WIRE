@@ -7,7 +7,7 @@
 // Last Modified On : 12-24-2020
 // ***********************************************************************
 // <copyright file="FileWriter.cs" company="WireCommon">
-//     Copyright (c) . All rights reserved.
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

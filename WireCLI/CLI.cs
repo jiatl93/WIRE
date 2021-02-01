@@ -7,12 +7,13 @@
 // Last Modified On : 12-10-2020
 // ***********************************************************************
 // <copyright file="CLI.cs" company="Red Clay">
-//     ${AuthorCopyright}
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
 using System;
+using Microsoft.TeamFoundation.VersionControl.Client;
 using WireCli;
 using WireCommon;
 using WireConfig;
@@ -40,12 +41,7 @@ namespace WireCLI
         private static CommandProcessor _commands;
 
         private static FileWriter _fileWriter;
-
-        /// <summary>
-        ///     The prompt
-        /// </summary>
-        private static readonly string Prompt = "WIRE>";
-
+        
         /// <summary>
         ///     Defines the entry point of the application.
         /// </summary>
@@ -70,7 +66,7 @@ namespace WireCLI
 
             while (!_exit)
             {
-                ConsoleWriterAsync.Write(Prompt);
+                ConsoleWriterAsync.Write(Constants.PROMPT);
                 var command = Console.ReadLine();
                 ProcessCommand(command);
             }

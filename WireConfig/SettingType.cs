@@ -7,7 +7,7 @@
 // Last Modified On : 12-11-2020
 // ***********************************************************************
 // <copyright file="SettingType.cs" company="Red Clay">
-//     ${AuthorCopyright}
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -21,12 +21,12 @@ namespace WireConfig
     public enum SettingType
     {
         /// <summary>
-        ///     The single
+        ///     The setting is a single type
         /// </summary>
         Single,
 
         /// <summary>
-        ///     The dictionary
+        ///     The setting is a dictionary type
         /// </summary>
         Dictionary
     }

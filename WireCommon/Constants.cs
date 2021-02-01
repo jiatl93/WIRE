@@ -7,7 +7,7 @@
 // Last Modified On : 12-11-2020
 // ***********************************************************************
 // <copyright file="Constants.cs" company="WireCommon">
-//     Copyright (c) 2020 RedClay LLC. All rights reserved.
+//     Copyright ©2020 RedClay LLC. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -21,6 +21,11 @@ namespace WireCommon
     /// </summary>
     public class Constants
     {
+        /// <summary>
+        ///     The prompt string for our console
+        /// </summary>
+        public const string PROMPT = "WIRE>";
+
         /// <summary>
         ///     The key
         /// </summary>
@@ -39,17 +44,17 @@ namespace WireCommon
         /// <summary>
         ///     The property set confirmation FMT
         /// </summary>
-        public const string PROPERTY_SET_CONFIRMATION_FMT = "Setting {0} succesfully changed to {1}";
+        public const string PROPERTY_SET_CONFIRMATION_FMT = "Setting {0} successfully changed to {1}";
 
         /// <summary>
         ///     The property set confirmation FMT
         /// </summary>
-        public const string DICTIONARY_PROPERTY_SET_CONFIRMATION_FMT = "Setting {0}: {1} succesfully changed to {2}";
+        public const string DICTIONARY_PROPERTY_SET_CONFIRMATION_FMT = "Setting {0}: {1} successfully changed to {2}";
 
         /// <summary>
         ///     The property delete confirmation FMT
         /// </summary>
-        public const string PROPERTY_DELETE_CONFIRMATION_FMT = "Setting {0} succesfully deleted";
+        public const string PROPERTY_DELETE_CONFIRMATION_FMT = "Setting {0} successfully deleted";
 
         /// <summary>
         ///     The SQL date format
