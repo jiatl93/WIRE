@@ -87,7 +87,7 @@ namespace WireAPI
         {
             try
             {
-                _credentials = 
+                _credentials =
                     (_vsoConfig.PromptForLogin)
                         ? new VssClientCredentials()
                         : new VssBasicCredential(string.Empty, _vsoConfig.Token);
@@ -146,7 +146,7 @@ namespace WireAPI
             try
             {
                 var witClient = _connection.GetClient<WorkItemTrackingHttpClient>();
-                var query = new Wiql {Query = queryString};
+                var query = new Wiql { Query = queryString };
                 var queryResults = witClient.QueryByWiqlAsync(query, true).Result;
                 if (queryResults.WorkItems.Any())
                     result = witClient.GetWorkItemsAsync(queryResults.WorkItems.Select(wir => wir.Id)).Result;

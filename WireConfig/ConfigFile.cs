@@ -58,7 +58,7 @@ namespace WireConfig
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             Formatting = Formatting.Indented,
             ContractResolver = new EncryptedStringPropertyResolver(Constants.ENCRYPTION_KEY)
-    };
+        };
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConfigFile" /> class.

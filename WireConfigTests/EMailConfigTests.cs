@@ -154,7 +154,7 @@ namespace WireConfigTests
             // Arrange
             var eMailConfig = this.CreateEMailConfig();
             ConfigFileTestCommon.SetupEMailConfig(eMailConfig);
-            
+
             // Act
             int initialCount = eMailConfig.Recipients.Count;
             eMailConfig.ClearValue(EMailConfig.RECIPIENTS_KEY);

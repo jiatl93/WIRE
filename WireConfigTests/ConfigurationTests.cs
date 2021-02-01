@@ -277,7 +277,7 @@ namespace WireConfigTests
             // Arrange
             configErrorText = null;
             var configuration = this.CreateConfiguration();
-            
+
             mockEMailConfig.ContainsSetting(VALID_SETTING_NAME).Returns(true);
             mockVsoConfig.ContainsSetting(INVALID_SETTING_NAME).Returns(false);
             mockControllerConfig.ContainsSetting(INVALID_SETTING_NAME).Returns(false);
@@ -303,7 +303,7 @@ namespace WireConfigTests
             // Arrange
             configErrorText = null;
             var configuration = this.CreateConfiguration();
-            
+
             mockEMailConfig.ContainsSetting(VALID_SETTING_NAME).Returns(false);
             mockVsoConfig.ContainsSetting(VALID_SETTING_NAME).Returns(true);
             mockControllerConfig.ContainsSetting(VALID_SETTING_NAME).Returns(false);
@@ -329,7 +329,7 @@ namespace WireConfigTests
             // Arrange
             configErrorText = null;
             var configuration = this.CreateConfiguration();
-            
+
             mockEMailConfig.ContainsSetting(VALID_SETTING_NAME).Returns(false);
             mockVsoConfig.ContainsSetting(VALID_SETTING_NAME).Returns(false);
             mockControllerConfig.ContainsSetting(VALID_SETTING_NAME).Returns(true);
@@ -889,7 +889,7 @@ namespace WireConfigTests
             mockEMailConfig.ContainsSetting(string.Empty).ThrowsForAnyArgs(new Exception(EXCEPTION_TEXT));
 
             // Act
-            configuration.SetValue(VALID_SETTING_NAME,$"{VALID_SETTING_KEY}={VALID_VALUE}");
+            configuration.SetValue(VALID_SETTING_NAME, $"{VALID_SETTING_KEY}={VALID_VALUE}");
 
             // Assert
             Assert.AreEqual(EXCEPTION_TEXT, configErrorText);

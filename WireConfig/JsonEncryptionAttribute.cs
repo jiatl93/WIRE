@@ -102,7 +102,7 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
         /// </returns>
         public object GetValue(object target)
         {
-            var plainText = (string) targetProperty.GetValue(target);
+            var plainText = (string)targetProperty.GetValue(target);
             return AesProvider.Encrypt(plainText);
         }
 
@@ -116,7 +116,7 @@ public class EncryptedStringPropertyResolver : DefaultContractResolver
         /// <exception cref="CryptographicException">IV is missing or invalid.</exception>
         public void SetValue(object target, object value)
         {
-            var cryptText = (string) value;
+            var cryptText = (string)value;
             targetProperty.SetValue(target, AesProvider.Decrypt(cryptText));
         }
     }

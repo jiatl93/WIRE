@@ -277,7 +277,7 @@ namespace WireConfig
         /// <value>The password for the email server.</value>
         [JsonEncrypt]
         public string Password { get; set; }
-        
+
         /// <summary>
         ///     Email recipients keyed by user name.
         /// </summary>

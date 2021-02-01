@@ -31,7 +31,7 @@ namespace WireConfig
         /// </summary>
         /// <value>The email host.</value>
         string Host { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the port for the email host.
         /// </summary>

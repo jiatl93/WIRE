@@ -282,7 +282,7 @@ namespace WireBusinessLogic
 
                     if (workItem.Fields.ContainsKey(Constants.WORK_ITEM_ASSIGNED_TO))
                     {
-                        assignedTo = (IdentityRef) workItem.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
+                        assignedTo = (IdentityRef)workItem.Fields[Constants.WORK_ITEM_ASSIGNED_TO];
                         displayName = assignedTo.DisplayName;
                         workItemName = workItem.Fields[Constants.WORK_ITEM_TITLE].ToString();
                         workItemUrl = workItem.Url.Replace("apis/wit/workItems", "workitems/edit");
@@ -446,8 +446,8 @@ namespace WireBusinessLogic
             if (files.Length > 0)
             {
                 logFile = (from f in files
-                    orderby f.LastWriteTime descending
-                    select f).First();
+                           orderby f.LastWriteTime descending
+                           select f).First();
 
                 // need to make sure the linefeeds are intact
                 var logStrings = File.ReadAllLines(logFile.FullName);
@@ -472,8 +472,8 @@ namespace WireBusinessLogic
             if (files.Length > 0)
             {
                 reportFile = (from f in files
-                    orderby f.LastWriteTime descending
-                    select f).First();
+                              orderby f.LastWriteTime descending
+                              select f).First();
 
                 // need to make sure the linefeeds are intact
                 var reportStrings = File.ReadAllLines(reportFile.FullName);
@@ -490,7 +490,7 @@ namespace WireBusinessLogic
         /// <param name="state">The state.</param>
         private void TimerCallback(object state)
         {
-            var currentState = (WorkStatus) state;
+            var currentState = (WorkStatus)state;
 
             switch (currentState.Status)
             {

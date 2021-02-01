@@ -41,7 +41,7 @@ namespace WireCLI
         private static CommandProcessor _commands;
 
         private static FileWriter _fileWriter;
-        
+
         /// <summary>
         ///     Defines the entry point of the application.
         /// </summary>

@@ -12,7 +12,7 @@ namespace WireCLITests
         /// <summary>
         ///     The phrase
         /// </summary>
-        private static readonly string[] phrase = {"life", "the", "universe", "and", "everything"};
+        private static readonly string[] phrase = { "life", "the", "universe", "and", "everything" };
 
         /// <summary>
         ///     The command 1

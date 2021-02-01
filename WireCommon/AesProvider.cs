@@ -73,7 +73,7 @@ namespace WireCommon
 
             using (var inputStream = new MemoryStream(buffer, false))
             using (var outputStream = new MemoryStream())
-            using (var aes = new AesManaged {Key = _keyBytes})
+            using (var aes = new AesManaged { Key = _keyBytes })
             {
                 var iv = aes.IV; // first access generates a new IV
                 outputStream.Write(iv, 0, iv.Length);
@@ -104,7 +104,7 @@ namespace WireCommon
 
             using (var inputStream = new MemoryStream(buffer, false))
             using (var outputStream = new MemoryStream())
-            using (var aes = new AesManaged {Key = _keyBytes})
+            using (var aes = new AesManaged { Key = _keyBytes })
             {
                 var iv = new byte[16];
                 var bytesRead = inputStream.Read(iv, 0, 16);
